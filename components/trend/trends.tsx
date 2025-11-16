@@ -4,23 +4,30 @@
 
 import React from "react";
 import { ItemTrend } from "./item";
+import type { post } from "@/types/types";
 
-
-export function Trends(){
+export async function Trends(){
     
-
+      const res=await fetch(`http://localhost:5000/posts/gettopreadingposts`,{      
+              cache:'no-store',
+              headers:{'Content-Type': 'application/json'}        
+                     })
+                       if(!res.ok){
+                        throw new Error('somthing went wrong')
+                       }
+                     const data:{posts:post[]}=await res.json()
 
 
 return(
            <section className="flex flex-col lg:flex-row h-[750px] sm:h-[800px]  lg:h-[550px]  xl:h-[700px]  w-full justify-around p-2
             items-center text-white bg-white text-[2.5px] sm:text-[3px]   lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]    ">
-                
-                       <ItemTrend title="FIRSTPOST" description="this is my first post i hope you like it and very welcome"
-                        image="https://cdn.pixabay.com/photo/2025/10/09/14/14/muztagh-9883659_1280.jpg" ></ItemTrend>
-                         <ItemTrend title="FIRSTPOST" description="thisdsadsadsadadsadsadsdsadsadasdsadasdasdsadasdsadsadsadsdsadsadsadsadsadsadsadsasadsads"
-                        image="https://cdn.pixabay.com/photo/2025/10/09/14/14/muztagh-9883659_1280.jpg" ></ItemTrend>
-                         <ItemTrend title="FIRSTPOST" description="thisdsadsadsadadsadsadsdsadsadasdsadasdasdsadasdsadsadsadsdsadsadsadsadsadsadsadsasadsads"
-                        image="https://cdn.pixabay.com/photo/2025/10/09/14/14/muztagh-9883659_1280.jpg" ></ItemTrend>
+               {     data.posts.map(elm=>{
+                       return <ItemTrend key={elm._id} title={elm.title} description={elm.description}
+                        image={elm.mainimage} watches={elm.views} id={elm._id} ></ItemTrend>    
+                 
+                                      })             
+
+               }
                  
                    
                                    
