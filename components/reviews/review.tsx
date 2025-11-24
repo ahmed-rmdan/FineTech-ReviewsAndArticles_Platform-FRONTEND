@@ -13,7 +13,8 @@ import { Star } from 'lucide-react';
 
 let arr=[1,2,3,4,5,6,7,8,9,10]
 
-export const Review:React.FC<{title:string,description:string,image:string,date:string , content:string,summary:string,score:number,userscore:number}>=(props)=>{
+export const Review:React.FC<{title:string,description:string,image:string,date:Date , content:string,summary:string,
+  score:number,userscore:number,views:number,likes:number , comments:number,id:string}>=(props)=>{
     
 
 
@@ -25,9 +26,9 @@ return(
                                        <House size={'1.5em'} ></House>  Home
                                   </Link>
                                    <ChevronRight size={'1.5em'}></ChevronRight>
-                                   <Link className="flex flex-row items-center justify-center gap-[5px] hover:underline" href={'/reviews'}> 
-                                       <Star size={'1.5em'}></Star>  Reviews
-                                  </Link>
+                                   <a className="flex flex-row items-center justify-center gap-[5px] hover:underline" 
+                                    href={'/reviews?sort=Newest&category=AllReviews'} > 
+                                       <Star size={'1.5em'}></Star>Reviews</a>
                                   <ChevronRight size={'1.5em'}></ChevronRight>
                                   <p className="hover:underline hover:cursor-pointer"> {props.title}</p>
                             </div>
@@ -36,13 +37,13 @@ return(
                                           
                                               <div className="flex flex-row items-center font-bold  gap-[2px] sm:gap-[5px]">
                                               <ThumbsUp size={'1.5em'}></ThumbsUp>
-                                                20
+                                               {props.likes}
                                                   </div>
                                                   <div className="flex flex-row items-center font-bold   gap-[2px] sm:gap-[5px]">
                                                         <MessageCircle size={'1.5em'}></MessageCircle>
-                                                           35
+                                                          {props.comments}
                                                   </div>
-                                  <p > {props.date}</p>
+                                  <p > {props.date.toLocaleDateString('eng-us')}</p>
                               </div>
                               <h1 className="w-full  text-center text-[9.5em] font-extrabold underline">  {props.title}  </h1>
                               <div className="w-[85%] h-[300px] relative self-center mt-[10px]">                                     
@@ -58,7 +59,7 @@ return(
                                     <button className="  w-[70px] h-[70px]  sm:h-[55px] sm:w-[55px]  xl:h-[90px] xl:w-[90px] rounded-[180%] 
                                        border-2 border-[#cb1b16] text-[9em] 
                                            font-bold bg-white text-main">
-                                     5
+                                     {props.score}
                                      </button>                                    
                                </div>
                                <div className=" w-full flex flex-col items-center mt-[20px] gap-[20px] ">
@@ -67,9 +68,9 @@ return(
                                              <button className="  w-[50px] h-[50px]  sm:h-[55px] sm:w-[55px]  xl:h-[70px] xl:w-[70px] rounded-[180%] 
                                               border-4  text-[7em] 
                                            font-bold bg-white text-main border-[#cb1b16] ">
-                                              7
+                                              {props.userscore}
                                            </button>
-                                           <p className="text-[4em] font-semibold">Based ON  <span className="font-extrabold text-main text-[1.2em] underline" >15</span>  Reviews</p>    
+                                           <p className="text-[4em] font-semibold">Based ON  <span className="font-extrabold text-main text-[1.2em] underline" >{props.userscore}</span>  Reviews</p>    
                                        </div>
                                        
                                        <div className="flex flex-col items-center gap-[15px] mt-[10px] ">
@@ -95,7 +96,7 @@ return(
 
                               <div className="w-[25%] items-center justify-center flex flex-row text-[5em] mt-[30px] gap-[8px] ">
                                 <ThumbsUp size={'1.5em'} fill="black" className="hover:cursor-pointer"></ThumbsUp>
-                                                <span className="text-center font-bold">20</span>
+                                                <span className="text-center font-bold">{props.likes}</span>
                               </div>
                                                                                                                       
                                                       

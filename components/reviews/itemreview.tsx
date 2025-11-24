@@ -6,13 +6,13 @@ import { ThumbsUp } from 'lucide-react';
 import { MessageCircle } from 'lucide-react';
 import Link from "next/link";
 
-export const ReviewItem:React.FC<{title:string,description:string,image:string}>=(props)=>{
+export const ReviewItem:React.FC<{title:string,description:string,image:string,score:number,views:number,comments:number,likes:number,date:Date,id:string}>=(props)=>{
     
 
 
 
 return(
-        <div className=" h-[23%] w-[97%] sm:w-[90%] xl:w-[60%]    bg-white relative flex flex-row items-center justify-between rounded-[5px] text-[#cb1b16] ">
+        <div className="  w-[97%] sm:w-[90%] xl:w-[60%]  h-[180px] sm:h-[220px]  bg-white relative flex flex-row items-center justify-between rounded-[5px] text-[#cb1b16] ">
 
 
                       <div className=" w-[40%] sm:w-[30%] h-full  relative rounded-[5px]  ">
@@ -22,7 +22,7 @@ return(
                             <button className="  w-[40px] h-[40px]  sm:h-[55px] sm:w-[55px]  xl:h-[60px] xl:w-[60px] rounded-[180%] absolute bottom-[5%] xl:bottom-[10%] 
                       right-[6%] z-20 border-2 border-[#cb1b16] text-[7em] 
                       font-bold bg-white">
-                                     5
+                                    {props.score.toString()}
                       </button>
                               <div className="bg-gray-700 absolute top-0 min-w-full min-h-full z-10 opacity-50  rounded-[10px]">
 
@@ -32,7 +32,7 @@ return(
                         
                      <div className=" w-[55%] sm:w-[68%] h-[97%]   flex flex-col item-center justify-center ">
                            <div className="w-full h-[70%] flex flex-col">
-                                <Link href={'/reviews/sdsadsdsa'} className=" w-full z-20 text-[8em] items-center underline font-bold hover:cursor-pointer" >
+                                <Link href={`/reviews/${props.id}`} className=" w-full z-20 text-[8em] items-center underline font-bold hover:cursor-pointer" >
 
                                     {props.title}
                                 </Link>
@@ -40,19 +40,19 @@ return(
                                   {props.description}
                                  </p>
                            </div>
-                            <p className="w-[95%] h-[10px]  flex  justify-end text-[4em]  "> 4 / 5 /2025</p>
+                            <p className="w-[95%] h-[10px]  flex  justify-end text-[4em]  "> {props.date.toLocaleDateString('en-US')}</p>
                           <div className="h-[30%] flex flex-row justify-start text-[5em] gap-[5%] items-center">
                                  <div className="flex flex-row items-center font-bold  gap-[8px]">
                                         <Eye size={'1.5em'}></Eye>
-                                        10
+                                        {props.views}
                                  </div>
                                    <div className="flex flex-row items-center font-bold  gap-[8px]">
                                         <ThumbsUp size={'1.5em'}></ThumbsUp>
-                                        20
+                                      {props.likes}
                                  </div>
                                    <div className="flex flex-row items-center font-bold  gap-[8px]">
                                         <MessageCircle size={'1.5em'}></MessageCircle>
-                                        35
+                                        {props.comments}
                                  </div>
                           </div>
                            

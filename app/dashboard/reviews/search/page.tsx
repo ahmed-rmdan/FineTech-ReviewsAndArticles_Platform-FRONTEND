@@ -9,11 +9,11 @@ import { Categories } from "@/components/global/categories"
 import { ReviewItemAdmin } from "@/components/admin/reviews/reviewitem"
 import { SelectCategory } from "@/components/global/select"
 
-export default async function ReviewsControl({searchParams }:{searchParams:{activepage:string,sort:string,category:string}}){
+export default async function ReviewsControl({searchParams }:{searchParams:{activepage:string,sort:string,category:string,search:string}}){
   const params =await searchParams
   console.log(params.category)
-  const res=await fetch(`http://localhost:5000/reviews/getreviews?page=${params.activepage}&sort=${params.sort}&category=${params.category}`,{      
-      cache:'no-store'        
+  const res=await fetch(`http://localhost:5000/reviews/getsearchreviews?page=${params.activepage}&sort=${params.sort}&category=${params.category}&search=${params.search}`,{      
+      cache:'no-store',next:{tags:['reviews']}      
                      })
                      if(!res.ok){
                         throw new Error('somthing is wrong')
@@ -22,13 +22,13 @@ export default async function ReviewsControl({searchParams }:{searchParams:{acti
   return(
     <div className=" min-w-full sm:min-w-[75%]  flex-col   flex items-center justify-center p-4 gap-[10px] sm:gap-[15px] " >
          <div className="w-full text-[0.9em] xl:tex-[1em] flex items-center justify-center">
-            <SelectCategory value={params.category} type="admin"></SelectCategory>
+            <SelectCategory value={params.category} type="searchadmin" search={params.search}></SelectCategory>
          </div>
           
        <div className="flex flex-row w-full sm:w-full lg:w-[90%] xl:w-[70%] justify-center items-center h-[55px] sm:h-[80px] gap-[11px] sm:gap-[20px]">
              
-             <Searchinput type="reviewsadmin"></Searchinput>
-            <Filter type="reviews" filter="reviewsadmin" category={params.category}></Filter>
+             <Searchinput type='reviewsadmin'></Searchinput>
+            <Filter type="reviews" filter="searchreviewsadmin" category={params.category} search={params.search}></Filter>
        </div>         
         <div className="flex flex-col w-[99%] sm:w-[90%] xl:w-[75%] gap-[20px] items-center justify-around   ">
           {data.reviews.map(elm=>{
@@ -36,7 +36,7 @@ export default async function ReviewsControl({searchParams }:{searchParams:{acti
           })}
 
        </div>         
-             <Pages activepage={Number(params.activepage)} noposts={data.noreviews} types="reviewsadmin" category={params.category} sort={params.sort}></Pages>
+             <Pages activepage={Number(params.activepage)} noposts={data.noreviews} types="searchreviewsadmin" category={params.category} sort={params.sort}></Pages>
         
     </div>
   )

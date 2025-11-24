@@ -1,9 +1,9 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-
-export const HomeItem:React.FC<{title:string,description:string,image:string}>=(props)=>{
+export const HomeItem:React.FC<{title:string,description:string,image:string,score:number,id:string}>=(props)=>{
     
 
 
@@ -21,14 +21,14 @@ return(
                           {props.description}
                         </p>
                      
-                          <h1 className=" w-[97%] z-20 text-[10em] items-center underline font-bold hover:cursor-pointer" >
+                          <Link href={`/reviews/${props.id}`} className=" w-[97%] z-20 text-[10em] items-center underline font-bold hover:cursor-pointer" >
 
                          {props.title}
-                       </h1>
+                       </Link>
                       <button className="  w-[50px] h-[50px]  sm:h-[65px] sm:w-[65px]  xl:h-[85px] xl:w-[85px] rounded-[180%] absolute bottom-[5%] xl:bottom-[10%] 
                       right-[6%] z-20 border-2 border-[#cb1b16] text-[9em] 
                       font-bold bg-white">
-                                     5
+                                     {props.score.toString()}
                       </button>
                                    
            </div>

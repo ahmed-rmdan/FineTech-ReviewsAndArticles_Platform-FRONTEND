@@ -10,3 +10,18 @@ export type post={
     createdAt:string,
     _id:string
 }
+export type review={
+    mainimage:string,
+    category:string,
+    title:string,
+    description:string,
+    content:string,
+    likes:string[],
+    comments:string[],
+    views:number,
+     score:number,
+     summary:string,
+     usersscore:{id:string,score:string}[]
+    createdAt:string,
+    _id:string
+}

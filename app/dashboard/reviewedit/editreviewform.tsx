@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation"
 
 import { Controller } from "react-hook-form";
 
+import type { review } from "@/types/types"
 import {
   Select,
   SelectContent,
@@ -21,7 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-export default function AddReview(){
+export  function EditReviewForm({review}:{review:review}){
 
 
 const router=useRouter()
@@ -40,41 +41,46 @@ const router=useRouter()
   const {register,handleSubmit,formState:{errors,isSubmitting},control,setError}=useForm<formfield>({
     resolver:zodResolver(schema),
     defaultValues:{
-      title:'',
-       category:'',
-      description:'',
-      content:'',
+      title:review.title,
+       category:review.category,
+      description:review.description,
+      content:review.content,
       mainimage:'',
-      summary:''
+      summary:review.summary,
+      score:review.score.toString()
 
     }
   })
-  
 
-  const onsubmit:SubmitHandler<formfield>=async(data)=>{
-  const checkfile:File=data.mainimage[0]
+
+const onsubmit:SubmitHandler<formfield>=async(data)=>{
+
+    if(data.mainimage!==''){
+       const checkfile:File=data.mainimage[0]
   const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
  if(!allowedTypes.includes(checkfile.type)){
   setError('mainimage',{message:'please only upload a image file'})
   return;
  }
-console.log('vreating')
-console.log(data.category)
+    }
+
 
  try{
-      const res1= await fetch('http://localhost:5000/reviews/createreview',{
-         method:'POST',
+      const res1= await fetch('http://localhost:5000/reviews/editreview',{
+         method:'PUT',
        headers:{    'Content-Type': 'application/json'},
                     body:JSON.stringify(
-                         {title:data.title,description:data.description,content:data.content,summary:data.summary,score:Number(data.score),category:data.category}
+                         {title:data.title,description:data.description,content:data.content,id:review._id,summary:data.summary,score:Number(data.score),category:data.category}
                     )
  })
- const reviewdata= await res1.json()
+ const postdata= await res1.json()
  if(!res1.ok){
-throw new Error(reviewdata.message as string)
-
+throw new Error(postdata.message as string)
  }
-console.log(reviewdata.id)
+   if(data.mainimage===''){
+    toast.success('review has been edited successfully')
+    return router.push('/dashboard/reviews?activepage=1&sort=all&category=allreviews')       
+   }
 
   const imagefile:File=data.mainimage[0]
   const formdata=new FormData()
@@ -82,13 +88,13 @@ console.log(reviewdata.id)
 
   console.log(formdata.get('file'))
 
-      const res2= await fetch(`http://localhost:5000/reviews/putreviewimage?id=${reviewdata.id}`,{
+      const res2= await fetch(`http://localhost:5000/reviews/editreviewimage?id=${review._id}`,{
          method:'PUT',
                     body:formdata
  })
- const reviewdata2= await res2.json()
+ const postdata2= await res2.json()
  if(!res2.ok){
-throw Error(reviewdata2.message as string)
+throw Error(postdata2.message as string)
  }
    
    
@@ -96,22 +102,20 @@ throw Error(reviewdata2.message as string)
 
    const msg = error instanceof Error ? error.message : String(error);
  setError('root',{type: "manual", message:msg})
- return
  }
  
 
- router.push('/dashboard/reviews?activepage=1&sort=all&catagory=AllReviews')
-toast.success('review has been Created successfully')
+    toast.success('review has been edited successfully')
+    return router.push('/dashboard/reviews?activepage=1&sort=all&category=allreviews')    
 
   }
-
 
 
 
   return(
     <div className=" min-w-[75%]   flex items-center justify-center p-5 " onSubmit={handleSubmit(onsubmit)} >
          <div className="bg-white flex flex-col w-[98%] sm:w-[90%] xl:w-[80%] items-center gap-[15px] p-5 rounded-2xl">
-               <h1 className="text-main text-[9em] underline font-bold ">Add Review</h1>
+               <h1 className="text-main text-[9em] underline font-bold ">Edit Review</h1>
                 <form className="flex flex-col w-[85%] sm:w-[75%] xl:w-[55%]  gap-[15px] ">
                            <div className="grid gap-2 text-[2em]">
                            <Label  className="text-[2.5em]" htmlFor="Main Title">Main Title</Label>
@@ -127,7 +131,7 @@ toast.success('review has been Created successfully')
                             <div className="grid gap-2 text-[2em]">
                            <Label  className="text-[2.5em]" htmlFor="category">Category</Label>                      
                                    <Controller name="category"  control={control} render={({field})=>(
-                                   <Select value={field.value}  onValueChange={(value)=>field.onChange(value)}>
+                                   <Select value={review.category}  onValueChange={(value)=>field.onChange(value)}>
                                       <SelectTrigger className="w-[180px]">
                                        <SelectValue placeholder="Select" />
                                           </SelectTrigger>
@@ -141,8 +145,6 @@ toast.success('review has been Created successfully')
                                    )                                     
                                    } >
 
-
-
                                    </Controller>
 
                             </div>                                                  
@@ -152,7 +154,7 @@ toast.success('review has been Created successfully')
                                  id="Mainimage"
                                   type="file"
                                 placeholder=""
-                                 required
+                           
                                  {...register('mainimage')}
                                      />
                                      { errors.mainimage?.message&&<p className="text-main font-semibold text-[1.8em] ">{errors.mainimage?.message as string}</p>}
@@ -207,7 +209,7 @@ toast.success('review has been Created successfully')
                             </div>                             
                                  {errors.root?.message&&<p className="text-main font-semibold text-[4em]  text-center" >* {errors.root?.message}</p>}
                                <Button disabled={isSubmitting} type='submit' className="w-[30%] self-center !text-[4em] mt-[10px] hover:cursor-pointer bg-main hover:bg-gray-500"
-                               > {isSubmitting?'..submitting':'Submit'} </Button>                                                   
+                               > {isSubmitting?'..submitting':'Edit'} </Button>                                                   
                  </form>
          </div>        
         

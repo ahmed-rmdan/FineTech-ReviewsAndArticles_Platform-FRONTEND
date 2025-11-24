@@ -4,7 +4,7 @@ import { SlidersHorizontal } from 'lucide-react';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export const Filter:React.FC<{type:string,filter:string,search?:string}>=(props)=>{
+export const Filter:React.FC<{type:string,filter:string,search?:string,category?:string}>=(props)=>{
       const router=useRouter()
 const [clicked,setclicked]=useState<boolean>(false)
 function handleclick(){
@@ -23,6 +23,16 @@ if(props.filter==='posts'){
 }
     if(props.filter==='searchposts'){
       location.href=`/blog/search?search=${props.search}&sort=${elm}`
+  }
+      if(props.filter==='reviewsadmin'){
+      location.href=`/dashboard/reviews?activepage=1&sort=${elm}&category=${props.category}`
+  }
+        if(props.filter==='searchreviewsadmin'){
+      location.href=`/dashboard/reviews/search?activepage=1&sort=${elm}&category=${props.category}&search=${props.search}`
+  }if(props.filter==='reviews'){
+     location.href=`/reviews?activepage=1&sort=${elm}&category=${props.category}`
+  }if(props.filter==='searchreviews'){
+     location.href=`/reviews/search?search=${props.search}&sort=${elm}&category=${props.category}`
   }
   
   

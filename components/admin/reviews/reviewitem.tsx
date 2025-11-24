@@ -13,14 +13,14 @@ export   function ReviewItemAdmin({title,mainimage,date,id,score}
 const router= useRouter()
  
   async function handledelete(){{
-    const confirm=window.confirm( `You are deleting post:${title} parmently from the database are you sure ?`)
+    const confirm=window.confirm( `You are deleting review:${title} parmently from the database are you sure ?`)
     
     if(!confirm){
          return
     }
-       const res=await fetch('http://localhost:5000/posts/deletepost',{
+       const res=await fetch('http://localhost:5000/reviews/deletereview',{
         method:'DELETE',
-        headers:{    'Content-Type': 'application/json'},
+        headers:{'Content-Type': 'application/json'},
         body:JSON.stringify({id})
        })  
        
@@ -28,8 +28,8 @@ const router= useRouter()
         console.log(id)
        }
 
-        router.push(`/dashboard/posts?activepage=1&sort=Newest`)   
-       toast.success('post has been deleted ')
+        router.push(`/dashboard/reviews?activepage=1&sort=Newest&category=allreviews`)   
+       toast.success('review has been deleted ')
 
   }}
 
@@ -50,7 +50,7 @@ const router= useRouter()
             </div>
    
             <div className="flex flex-row items-center gap-[10px]  sm:gap-[15px] xl:gap-[30px] ">
-                     <Pencil  size={'6em'} color="#cb1b16" className="hover:cursor-pointer" onClick={()=>{router.push(`/dashboard/postedit?id=${id}`)}} ></Pencil>
+                     <Pencil  size={'6em'} color="#cb1b16" className="hover:cursor-pointer" onClick={()=>{router.push(`/dashboard/reviewedit?id=${id}`)}} ></Pencil>
                      <Trash size={'6em'} color="#cb1b16" className="hover:cursor-pointer" onClick={handledelete}></Trash>
 
                      

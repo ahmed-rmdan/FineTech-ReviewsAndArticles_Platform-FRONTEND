@@ -82,7 +82,7 @@ return(
                     </div>
                           <div className="flex flex-row gap-[5px] items-center">
                       <Star size={'1.4em'}></Star>
-                      <Link href={'/reviews'}   className="hover:underline hover:cursor-pointer text-[1.05em]"> Reviews</Link>
+                      <Link href={'/reviews?sort=Newest&category=AllReviews'}  onClick={()=>location.href='/reviews?sort=Newest&category=AllReviews'} className="hover:underline hover:cursor-pointer text-[1.05em]"> Reviews</Link>
                     </div>
                         
                         
@@ -188,7 +188,7 @@ else {
                            
                               <div className="flex flex-row gap-[5px] items-center">
                                 <Star size={'1.4em'}></Star>
-                               <Link  href={'/reviews'}  className="hover:underline hover:cursor-pointer text-[1.05em]"> Reviews</Link>
+                               <Link  href={'/reviews?sort=Newest&category=AllReviews'}  className="hover:underline hover:cursor-pointer text-[1.05em]"> Reviews</Link>
                            </div>                                    
                       </div>
                       {/* <div className="flex flex-col w-full border-t-2 p-7   text-[1.1em]  items-center gap-[50px]">

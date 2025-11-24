@@ -5,14 +5,23 @@ import { Search } from "lucide-react"
 import { useRouter } from "next/navigation" 
 export  function Searchinput({type}:{type:string}){
     const router=useRouter()
-
+console.log(type)
 function handlesubmit(data:FormData){
+
 const search=data.get('search')
+
 if(type==='searchpostsadmin'){
 router.push(`/dashboard/posts/search?search=${search}&activepage=1&sort=all`)
 }
 if(type==='searchposts'){
 location.href=`/blog/search?search=${search}&sort=Newest`
+}
+
+if(type=='reviewsadmin'){
+   console.log('get')
+location.href=`/dashboard/reviews/search?search=${search}&sort=Newest&category=AllReviews&activepage=1`
+}if(type==='reviews'){
+    location.href=`/reviews/search?search=${search}&sort=Newest&category=AllReviews`
 }
 
 

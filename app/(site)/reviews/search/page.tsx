@@ -13,7 +13,7 @@ import type { review } from "@/types/types";
 import { Spinner } from "@/components/ui/spinner";
 
 
-export default  function Reviews({searchParams}:{searchParams:{sort:string,category:string}}) {
+export default  function ReviewsSearch({searchParams}:{searchParams:{sort:string,category:string,search:string}}) {
 const[loading,setloading]=useState<boolean>(false)  
 const [page,setpage]=useState<number>(1)
 const [scroll,setscroll]=useState(0)
@@ -22,7 +22,7 @@ const [reviews,setreviews]=useState<review[]>([])
 useEffect(()=>{
   async function getscrollpages(){
        setloading(true)
-      const res=await fetch(`http://localhost:5000/reviews/getreviews?page=${page}&sort=${searchParams.sort}&category=${searchParams.category}`,{
+      const res=await fetch(`http://localhost:5000/reviews/getsearchreviews?page=${page}&sort=${searchParams.sort}&category=${searchParams.category}&search=${searchParams.search}`,{
         cache:'no-store'
       })
       if(!res.ok){
@@ -71,11 +71,11 @@ setpage(prev=>prev<scrollpage?prev+1:prev)
                     <Spinner className="size-18 sticky " color={'red'} />
                   
                     </div>   }
-     <SelectCategory value={searchParams.category} type="reviews"></SelectCategory>
+     <SelectCategory value={searchParams.category} type="searchreviews" search={searchParams.search}></SelectCategory>
       <div className="flex flex-row w-full sm:w-[85%] lg:w-[70%] 2xl:w-[55%] justify-center items-center h-[55px] sm:h-[80px] gap-[11px] sm:gap-[20px]">
            
             <Searchinput type="reviews"></Searchinput>
-           <Filter filter="reviews" type="reviews" category={searchParams.category} ></Filter>
+           <Filter filter="reviews" type="searchreviews" category={searchParams.category} search={searchParams.search} ></Filter>
       </div>
                <section className="flex flex-col   w-full 
             items-center text-white bg-[#e5e7eb] text-[2.5px] sm:text-[3px] p-4  lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]    ">

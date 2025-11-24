@@ -11,7 +11,7 @@ import { FC } from "react"
 
 
 
-export const Pages:FC<{activepage:number,noposts:number,types:string,sort:string,search?:string}>=(props)=>{
+export const Pages:FC<{activepage:number,noposts:number,types:string,sort:string,search?:string,category?:string}>=(props)=>{
 
  const nopages=Math.ceil(props.noposts/6) 
  
@@ -64,6 +64,47 @@ export const Pages:FC<{activepage:number,noposts:number,types:string,sort:string
       </PaginationContent>
     </Pagination>
   )
- }     
+ }
+   if(props.types==='reviewsadmin'){
+       return (
+    <Pagination>
+      <PaginationContent>
+ {   curgrouppages !==1 && <PaginationItem>
+          <PaginationPrevious href={`/dashboard/reviews?activepage=${(curgrouppages-1)*6}&sort=${props.sort}$category=${props.category}`} />
+         </PaginationItem>}
+       { arr.map(elm=>{
+        return <PaginationItem key={elm}>
+             <PaginationLink href={`/dashboard/reviews?activepage=${elm}&sort=${props.sort}&category=${props.category}`} isActive={props.activepage===elm}>{elm}</PaginationLink>
+             </PaginationItem>
+                   }) 
+                       }
+  {  curgrouppages<nogrouppages&& <PaginationItem>
+          <PaginationNext href={`/dashboard/reviews?activepage=${(curgrouppages*6)+1}&sort=${props.sort}&category=${props.category}`} />
+        </PaginationItem>}
+      </PaginationContent>
+    </Pagination>
+  )
+ }
+   if(props.types==='searchreviewsadmin'){
+       return (
+    <Pagination>
+      <PaginationContent>
+ {  curgrouppages !==1 && <PaginationItem>
+          <PaginationPrevious href={`/dashboard/reviews/search?search=${props.search}&activepage=${(curgrouppages-1)*6}&sort=${props.sort}&category=${props.category}`} />
+         </PaginationItem>}
+       { arr.map(elm=>{
+        return <PaginationItem key={elm}>
+             <PaginationLink href={`/dashboard/reviews/search?search=${props.search}&activepage=${elm}&sort=${props.sort}&category=${props.category}`} isActive={props.activepage===elm}>{elm}</PaginationLink>
+             </PaginationItem>
+                   }) 
+                       }
+  {  curgrouppages<nogrouppages&& <PaginationItem>
+          <PaginationNext href={`/dashboard/reviews/search?search=${props.search}&activepage=${(curgrouppages*6)+1}&sort=${props.sort}&category=${props.category}`} />
+        </PaginationItem>}
+      </PaginationContent>
+    </Pagination>
+  )
+ }
+      
   
 }

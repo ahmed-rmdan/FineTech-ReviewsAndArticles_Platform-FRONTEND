@@ -24,7 +24,7 @@ return(
             items-center text-white bg-[#e5e7eb] text-[2.5px] sm:text-[3px]  gap-[20px]  lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]    ">
                       <div className="flex flex-col justify-between w-full h-[90%] gap-[20px] items-center ">
                         {  data.posts.map(elm=>{
-                                      return<ItemPost title={elm.title} description={elm.description}
+                                      return<ItemPost key={elm._id} title={elm.title} description={elm.description}
                                                 id={elm._id} image={elm.mainimage} date={new Date(elm.createdAt)} watches={elm.views} likes={elm.likes.length} comments={elm.comments.length}></ItemPost>
                                             })
                                     }            
