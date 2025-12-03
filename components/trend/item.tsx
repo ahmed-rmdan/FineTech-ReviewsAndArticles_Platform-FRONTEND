@@ -19,8 +19,8 @@ return(
                             <div className="bg-gray-700 absolute top-0 min-w-full min-h-full z-10 opacity-50 rounded-[5px] ">
 
                            </div>
-                           <div className="absolute w-[90px]  h-[40px] sm:w-[115px] sm:h-[50px] z-10 rounded-2xl text-white flex  items-center
-                            justify-center text-center font-extrabold text-[3.5em] bg-[#cb1b16] top-[20px] left-[20px]">
+                           <div className="absolute w-[90px]  h-[40px] sm:w-[125px] sm:h-[50px] z-10 rounded-2xl text-white flex  items-center
+                            justify-center text-center font-extrabold text-[4em] bg-[#cb1b16] top-[20px] left-[20px]">
                                   Top Reading
                            </div>
                              <div className="flex flex-row items-center text-[5.5em] font-bold z-10 absolute top-[30px] right-[30px] gap-[5px]  ">

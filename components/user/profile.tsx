@@ -1,4 +1,4 @@
-
+'use client'
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -18,7 +18,13 @@ import { UserRoundPen } from 'lucide-react';
 import { Bookmark } from 'lucide-react';
 import { ThumbsUp } from 'lucide-react';
 import { LogOut } from 'lucide-react';
+import { signOut } from "next-auth/react";
 export function Profile() {
+ async function  onclick(){
+ await signOut()
+  
+  location.href='/'
+ }
   return (
     <Card className="w-full max-w-sm rounded-2xl">
 
@@ -50,7 +56,7 @@ export function Profile() {
        </div>       
          <div className="flex flex-row items-center gap-[7px]">
         <LogOut color="#cb1b16"></LogOut>
-           <p   className="text-main text-[4.5em] font-bold hover:underline hover:cursor-pointer "> LogOut</p>
+           <button  onClick={onclick}   className="text-main text-[4.5em] font-bold hover:underline hover:cursor-pointer "> LogOut</button>
             
        </div>            
                 

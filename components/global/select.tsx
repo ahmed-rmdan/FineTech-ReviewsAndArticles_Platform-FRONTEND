@@ -35,10 +35,10 @@ return(
   </SelectTrigger>
   <SelectContent className="text-white bg-main text-[5em]" >
          <SelectItem  value="AllReviews">AllReviews</SelectItem>
-    <SelectItem value="software">SoftWare</SelectItem>
+    <SelectItem value="Software">SoftWare</SelectItem>
     <SelectItem value="hardware">Hardware</SelectItem>
-    <SelectItem value="electronics">Electronics</SelectItem>
-     <SelectItem value="other">Other</SelectItem>
+    <SelectItem value="Electronics">Electronics</SelectItem>
+     <SelectItem value="Other">Other</SelectItem>
   </SelectContent>
 </Select>
 )

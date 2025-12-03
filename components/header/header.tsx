@@ -3,6 +3,9 @@
 import React from "react";
 import Link from "next/link";
 
+import { DarkLight } from "./darklight";
+import { ReviewsDrop } from "./reviewsdrop";
+
 import { AlignJustify } from 'lucide-react';
 import { useState,useEffect } from "react";
 import {motion} from 'framer-motion'
@@ -32,6 +35,10 @@ import { useRouter } from "next/navigation";
 
 import { SearchHeader } from "./searchheader";
 
+import { useSession } from "next-auth/react";
+
+
+
 export function Header(){
     const router=useRouter()
 const [width,setwidth]=useState<number>(0)
@@ -39,7 +46,7 @@ const [menu,setmenu]=useState<boolean>(false)
 const [search,setsearch]=useState<boolean>(false)
 const [sign,setsign]=useState<boolean>(false)
 const [profile,setprofile]=useState<boolean>(false)
-
+const {status,data}=useSession()
 
 useEffect(()=>{
 setwidth(window.screen.width)
@@ -80,36 +87,34 @@ return(
                       <Newspaper size={'1.4em'}></Newspaper>
                       <Link  href={'/blog?sort=Newest'} className="hover:underline hover:cursor-pointer text-[1.1em]" > Blog</Link>
                     </div>
-                          <div className="flex flex-row gap-[5px] items-center">
-                      <Star size={'1.4em'}></Star>
-                      <Link href={'/reviews?sort=Newest&category=AllReviews'}  onClick={()=>location.href='/reviews?sort=Newest&category=AllReviews'} className="hover:underline hover:cursor-pointer text-[1.05em]"> Reviews</Link>
-                    </div>
-                        
-                        
+                  <ReviewsDrop></ReviewsDrop>
           
                 </div>               
          
-             </div>       
+               </div>       
 
-             <Link href={'/'} onClick={()=>{handlenavigate('1')}} className=" text-center  font-extrabold w-[30%] 
+              <Link href={'/'} onClick={()=>{handlenavigate('1')}} className=" text-center  font-extrabold w-[30%] 
                                 sm:text-[6em]  lg:text-[9em] 
                                 hover:cursor-pointer   ">
                        FineTech
                 
               </Link>
               <div className="flex flex-row relative items-center justify-center rounded-2xl w-[30%] gap-[13%]">
-               {  sign&&  <div  onMouseLeave={()=>{setsign(prev=>false)}}  onMouseEnter={()=>{setsign(prev=>true)}} className=" absolute w-[300px] xl:w-[370px] h-[350px] 
+               {  !data && sign&&  <div  onMouseLeave={()=>{setsign(prev=>false)}}  onMouseEnter={()=>{setsign(prev=>true)}} 
+               className=" absolute w-[300px] xl:w-[370px] h-[350px] 
                      right-[70px]  xl:right-[150px]  2xl:right-[220px] top-[30px] rounded-2xl bg-[#e5e7eb]">
-                           <CardLogin></CardLogin>
-                   </div>}
-                 <Link href={'/login'} onMouseEnter={()=>{
-                  setsign(prev=>true)
-                 }} className=" sm:text-[3em] lg:text-[3em] xl:text-[4.5em] self-center font-semibold hover:underline hover:cursor-pointer">
-                 LogIn/SignUp
-                   </Link>
-
-{/* 
-                 <Link href={'/user/profile'} onMouseEnter={()=>{
+                                       <CardLogin></CardLogin>
+                                   </div>}
+                   
+               { !data &&  <Link href={'/login'} onMouseEnter={()=>{
+                                 setsign(prev=>true)
+                                 setsearch(false)
+                               }} className=" sm:text-[3em] lg:text-[3em] xl:text-[4.5em] self-center font-semibold hover:underline hover:cursor-pointer">
+                                   LogIn/SignUp
+                           </Link>}
+ 
+              {data && <>
+                         <Link href={'/user/profile'} onMouseEnter={()=>{
                   setprofile(prev=>true)
                  }} className="relative w-[45px] rounded-[180%] h-[45px] ">
                              <Image src={'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'} fill alt="profilepic" className="absolute
@@ -118,17 +123,12 @@ return(
                {  profile&&  <div  onMouseLeave={()=>{setprofile(prev=>false)}}  onMouseEnter={()=>{setsign(prev=>true)}} className=" absolute w-[300px] xl:w-[370px] 
                      right-[70px]  xl:right-[130px]  2xl:right-[220px] top-[45px] rounded-2xl bg-[#e5e7eb]">
                           <Profile></Profile>
-                   </div>}                        */}
-                
-                   {/* <User size={'8em'}></User> */}
-                   <Search onClick={handlesearch} className=" hover:cursor-pointer" size={'7.5em'}></Search>
-                   
-                   {/* <Sun className=" hover:cursor-pointer" size={'7.5em'}></Sun> */}
-                   <Moon className=" hover:cursor-pointer" size={'7.5em'}></Moon>
-                   
-                    
+                   </div>}                                       
+               </>}                    
+                  <Search onClick={handlesearch} className=" hover:cursor-pointer" size={'7.5em'}></Search>
+                  <DarkLight></DarkLight>  
               </div>
-      {    search && <SearchHeader></SearchHeader> }
+               { search && <SearchHeader></SearchHeader> }
                                    
            </nav>
     )
@@ -187,17 +187,17 @@ else {
                            </div>
                            
                               <div className="flex flex-row gap-[5px] items-center">
-                                <Star size={'1.4em'}></Star>
+                                <Star size={'1.4em'} fill="white"></Star>
                                <Link  href={'/reviews?sort=Newest&category=AllReviews'}  className="hover:underline hover:cursor-pointer text-[1.05em]"> Reviews</Link>
                            </div>                                    
                       </div>
-                      {/* <div className="flex flex-col w-full border-t-2 p-7   text-[1.1em]  items-center gap-[50px]">
+                  { !data  && <div className="flex flex-col w-full border-t-2 p-7   text-[1.1em]  items-center gap-[50px]">
                                   
                                   <Link href={'/login'}  >Login</Link>
                                    <Link href={'/signup'}  >Signup</Link>
                                                                
-                      </div> */}
-                     <div className=" flex flex-col items-center gap-[30px] border-t-2 text-[1em] p-7 ">
+                      </div>}
+                  {  data && <div className=" flex flex-col items-center gap-[30px] border-t-2 text-[1em] p-7 ">
                             <div className=" relative w-[50px] h-[50px] rounded-[180%]">
                                 <Image onClick={()=>router.push('/user/profile')}   src={'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'} 
                                       alt="profilepic" fill className="rounded-[180%]" ></Image>
@@ -224,7 +224,7 @@ else {
             
                       </div>            
                 
-                    </div>                      
+                    </div>  }                    
                                                
                          
                             
