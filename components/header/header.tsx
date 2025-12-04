@@ -125,7 +125,7 @@ return(
                           <Profile></Profile>
                    </div>}                                       
                </>}                    
-                  <Search onClick={handlesearch} className=" hover:cursor-pointer" size={'7.5em'}></Search>
+                  <Search onClick={handlesearch} className=" hover:cursor-pointer" size={'7.5em'} ></Search>
                   <DarkLight></DarkLight>  
               </div>
                { search && <SearchHeader></SearchHeader> }

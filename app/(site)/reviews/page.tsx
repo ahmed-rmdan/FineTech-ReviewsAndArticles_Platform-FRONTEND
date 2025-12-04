@@ -55,7 +55,7 @@ useEffect(()=>{
  let scrollpage
 
  if(window.innerWidth>425){
-  scrollpage=Math.ceil(scroll/850)
+  scrollpage=Math.ceil(scroll/750)
  }else{
  scrollpage=Math.ceil(scroll/600)
  }
@@ -66,7 +66,7 @@ setpage(prev=>prev<scrollpage?prev+1:prev)
 
 
   return (
-    <section className=" w-full flex flex-col items-center bg-[#e5e7eb] text-[2.5px] sm:text-[3px]  p-6 lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]   " >
+    <section className=" w-full flex flex-col items-center bg-[#e5e7eb] text-[2.5px] sm:text-[3px]  pt-3 lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]   " >
       {           loading&&  <div className=" sticky  top-[45%] flex justify-center items-center w-[100px] h-[90px] sm:w-[150px] rounded-2xl sm:h-[120px] bg-white z-[20000]">
                     <Spinner className="size-18 sticky " color={'red'} />
                   
@@ -77,7 +77,7 @@ setpage(prev=>prev<scrollpage?prev+1:prev)
             <Searchinput type="reviews"></Searchinput>
            <Filter filter="reviews" type="reviews" category={searchParams.category} ></Filter>
       </div>
-               <section className="flex flex-col   w-full 
+               <div className="flex flex-col   w-full 
             items-center text-white bg-[#e5e7eb] text-[2.5px] sm:text-[3px] p-4  lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]    ">
                       <div className="flex flex-col justify-between gap-[20px]  w-full  items-center ">
                      {       reviews.map(elm=>{
@@ -88,7 +88,7 @@ setpage(prev=>prev<scrollpage?prev+1:prev)
                       </div>
                   
                                    
-           </section>
+           </div>
  
     </section>
   );

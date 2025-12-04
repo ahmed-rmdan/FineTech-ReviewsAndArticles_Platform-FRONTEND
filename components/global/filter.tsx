@@ -41,7 +41,7 @@ return(
  
  <div onClick={handleclick}  className="flex relative items-center justify-center !h-[25px] sm:!h-[35px] w-[12%] sm:w-[7%] bg-[#cb1b16]  !text-[0.8em]
   rounded-[5px] text-white hover:cursor-pointer">
-         <SlidersHorizontal ></SlidersHorizontal>
+         <SlidersHorizontal className=" p-0.5 sm:p-0" ></SlidersHorizontal>
    {  clicked &&     <div className="absolute flex flex-col items-center justify-center top-[30px] sm:top-[40px] gap-[5px] w-[95px] sm:w-[140px]
      text-[#cb1b16] text-[6em] sm:text-[5em] rounded-[4px] 
            border-1 z-50 bg-white border-[#cb1b16] hover:cursor-auto ">

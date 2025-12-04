@@ -12,7 +12,7 @@ export const ReviewItem:React.FC<{title:string,description:string,image:string,s
 
 
 return(
-        <div className="  w-[97%] sm:w-[90%] xl:w-[60%]  h-[180px] sm:h-[220px]  bg-white relative flex flex-row items-center justify-between rounded-[5px] text-[#cb1b16] ">
+        <div className="  w-[98%] sm:w-[90%] xl:w-[60%]  h-[180px] sm:h-[220px]  bg-white relative flex flex-row items-center justify-between rounded-[5px] text-[#cb1b16] ">
 
 
                       <div className=" w-[40%] sm:w-[30%] h-full  relative rounded-[5px]  ">

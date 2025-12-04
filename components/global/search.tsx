@@ -31,7 +31,7 @@ return(
       
      <Input name="search" type="text" className=" border-[#cb1b16] text-[5em] border-2  !h-[30px] sm:!h-[40px] text-[#cb1b16] bg-white "  />
       <Button type="submit" variant="outline" className=" bg-[#cb1b16] hover:bg-[#cb1b16] text-[4.5em] !h-[30px]
-       sm:!h-[40px] gont-bold w-[28%] sm:w-[22%] hover:cursor-pointer hover:text-white " >
+       sm:!h-[40px] gont-bold w-[28%] text-center sm:w-[22%] hover:cursor-pointer hover:text-white " >
           Search
       </Button>
     </form>

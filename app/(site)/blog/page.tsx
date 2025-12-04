@@ -53,7 +53,7 @@ useEffect(()=>{
  let scrollpage
 
  if(window.innerWidth>425){
-  scrollpage=Math.ceil(scroll/700)
+  scrollpage=Math.ceil(scroll/750)
  }else{
  scrollpage=Math.ceil(scroll/600)
  }
@@ -68,7 +68,7 @@ setpage(prev=>prev<scrollpage?prev+1:prev)
 
 },[scroll])
 
-
+console.log(posts)
 
 
   return (
