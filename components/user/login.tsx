@@ -12,13 +12,14 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {signIn} from 'next-auth/react'
-import { useSession } from "next-auth/react"
+
 import Link from "next/link"
 import { useState } from "react"
 import Image from "next/image"
 import googlelogo from '@/public/Google Logo Icon Gsuite HD.jpeg'
+import { useRouter } from "next/navigation"
 export function CardLogin() {
-const {status,data}=useSession()
+const router=useRouter()
 const [loading,setloading]=useState<boolean>(false)
 const [error,seterror]=useState<string>('')
 const [iserror,setiserror]=useState<boolean>(false)
@@ -51,7 +52,7 @@ async function onsubmit(e:React.FormEvent<HTMLFormElement>){
 setloading(false)
 setiserror(false)
 seterror('')
-location.href='/'
+ router.push('/')
   }catch(err) {
    const errmes= err instanceof Error? err.message:'somthing went wrong'
    setiserror(true)
@@ -99,7 +100,7 @@ location.href='/'
               </div>
               <Input id="password" name="password" type="password" required />
             </div>
-                 {iserror&&<p className="text-main self-center w-full flex justify-center text-[3em] ">{error}</p>}
+                 {iserror&&<p className="text-main self-center text-center w-full flex justify-center text-[3em] ">{error}</p>}
           </div>
      
           <div className="w-full mt-6">

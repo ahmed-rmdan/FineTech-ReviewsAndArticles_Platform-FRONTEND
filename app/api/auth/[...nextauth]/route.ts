@@ -24,7 +24,7 @@ const handler = NextAuth({
           .findOne({ username: credentials?.username });
 
         if (!finduser) {
-          throw new Error(`username or password not right username is ${credentials?.username}`);
+          throw new Error(`username or password not right `);
         }
 
         const isequal = await bcrypt.compare(

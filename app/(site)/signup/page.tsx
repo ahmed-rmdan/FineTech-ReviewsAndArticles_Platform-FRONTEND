@@ -8,7 +8,7 @@ import { useForm,SubmitHandler } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
-
+import { signIn } from "next-auth/react"
 export default function Signup(){
 const router=useRouter()
 const schema=z.object({
@@ -52,6 +52,15 @@ const onsubmit:SubmitHandler<formfield>=async(form)=>{
              if(!res.ok){
               throw new Error(data.message as string)
              }
+          const RES= await signIn('credentials',{
+            redirect:false
+                ,
+              username:form.username,
+              password:form.password
+             })
+             if(!RES?.ok){
+              throw new Error(RES?.error  as string)
+             }
              router.push('/')
              toast.success('you have been logged in')
  
@@ -65,9 +74,9 @@ const onsubmit:SubmitHandler<formfield>=async(form)=>{
   return(
     <div className=" flex items-center justify-center   w-full bg-sec text-[3px] sm:text-[4px]   lg:text-[4px]  xl:text-[4px] 2xl:text-[4.5px] " >
          
-         <div className="flex flex-col items-center justify-start bg-white p-6 m-10 w-[97%] sm:w-[85%] xl:w-[55%] 2xl:w-[50%] rounded-2xl gap-[25px] ">
+         <div className="flex flex-col items-center justify-start bg-white p-4 sm:p-6 m-10 w-full sm:w-[85%] xl:w-[55%] 2xl:w-[50%] rounded-2xl gap-[25px] ">
             <h1 className="w-full underline font-extrabold text-main text-[8em] text-center"> SignUP</h1>
-             <form className="flex flex-col items-center w-[95%] sm:w-[70%] lg:w-[60%] gap-[15px] text-[3em]" onSubmit={handleSubmit(onsubmit)}>
+             <form className="flex flex-col items-center w-[98%] sm:w-[70%] lg:w-[60%] gap-[15px] text-[3em]" onSubmit={handleSubmit(onsubmit)}>
                     <Label className="self-start">Name</Label>
                      <Input {...register('name')} type="text" placeholder="your Name" required />
                   { errors.name&&<p className="text-main font-semibold self-start "> *{errors.name?.message}</p>}
@@ -88,7 +97,7 @@ const onsubmit:SubmitHandler<formfield>=async(form)=>{
                             <Label htmlFor="toggle">Enable notifications</Label>
                        </div>
                      {errors.root&& <p className="text-main font-semibold">* {errors.root?.message} </p>}
-                    <Button type="submit" className="bg-main text-sec font-bold sm:text-[1.3em] w-[30%] sm:w-[20%]
+                    <Button type="submit" className="bg-main text-sec font-bold sm:text-[1.3em] w-[30%] sm:w-[25%]
                      hover:bg-gray-500 hover:cursor-pointer">{isSubmitting?'..Submitting':'Sumbit'}</Button>
                    
              </form>

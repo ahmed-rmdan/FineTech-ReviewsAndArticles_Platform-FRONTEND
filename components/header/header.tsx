@@ -116,8 +116,8 @@ return(
               {data && <>
                          <Link href={'/user/profile'} onMouseEnter={()=>{
                   setprofile(prev=>true)
-                 }} className="relative w-[45px] rounded-[180%] h-[45px] ">
-                             <Image src={'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'} fill alt="profilepic" className="absolute
+                 }} className="relative w-[35px] lg:w-[45px] rounded-[180%] h-[35px] lg:h-[45px] ">
+                             <Image src={!data?.user.image?'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png':data.user.image as string} fill alt="profilepic" className="absolute
                               w-full top-0 h-full rounded-[180%] "></Image>
                    </Link>
                {  profile&&  <div  onMouseLeave={()=>{setprofile(prev=>false)}}  onMouseEnter={()=>{setsign(prev=>true)}} className=" absolute w-[300px] xl:w-[370px] 
