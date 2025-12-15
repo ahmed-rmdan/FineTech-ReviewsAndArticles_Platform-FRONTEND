@@ -29,3 +29,25 @@ export type liked={
     item:post|review,
     kind:'post'|'review'
 }
+
+export type subcomment={
+        name:string,
+    image:string,
+    likes:string[],
+    content:string,
+    itemid:string
+        createdAt:Date,
+    _id:string
+}
+
+export type comment={
+    name:string,
+    image:string,
+    likes:string[],
+    content:string,
+    itemid:string
+    subcomments:subcomment[],
+        createdAt:Date,
+    _id:string
+}
+

@@ -51,8 +51,8 @@ async function  addlike(){
 
     return(
             < >
-                 { !data ?<Bookmark  size={'8.5em'} fill='white' onClick={handlenotauth} className="self-end mr-[30px] mb-[15px]  hover:cursor-pointer"></Bookmark>
-                  :<Bookmark onClick={addlike}  size={'8.5em'} fill={saves.includes(id)?"black" :'white' } className="self-end mr-[30px] mb-[15px] hover:cursor-pointer"></Bookmark>}
+                 { !data ?<Bookmark  size={'8.5em'} fill='white' onClick={handlenotauth} className="self-end mr-[15px] sm:mr-[30px] mb-[15px]  hover:cursor-pointer"></Bookmark>
+                  :<Bookmark onClick={addlike}  size={'8.5em'} fill={saves.includes(id)?"black" :'white' } className="self-end mr-[15px] sm:mr-[30px] mb-[15px] hover:cursor-pointer"></Bookmark>}
                  
               </>  
     )

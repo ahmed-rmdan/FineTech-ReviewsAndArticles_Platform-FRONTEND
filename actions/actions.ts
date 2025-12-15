@@ -38,3 +38,65 @@ export async function liking(id:string,itemid:string,kind:string){
 
 }
 
+export async function addcomment(userid:string,itemid:string,content:string){
+      const res=await fetch(`http://localhost:5000/comments/addcomment`,{ 
+                     method:'POST'    
+                     , 
+                    headers:{'Content-Type': 'application/json'} ,
+                    body:JSON.stringify({userid,
+                        itemid,
+                        content
+                        
+                    })       
+                           }
+                        )
+                          if (!res.ok) {
+                   throw new Error('Failed to add comment')
+                      }
+                      revalidateTag('comments') 
+                      
+                     
+
+}
+
+export async function addsubcomment(userid:string,itemid:string,content:string,commentid:string){
+      const res=await fetch(`http://localhost:5000/comments/addsubcomment`,{ 
+                     method:'POST'    
+                     , 
+                    headers:{'Content-Type': 'application/json'} ,
+                    body:JSON.stringify({userid,
+                        itemid,
+                        content,
+                        commentid
+                        
+                    })       
+                           }
+                        )
+                          if (!res.ok) {
+                   throw new Error('Failed to add comment')
+                      }
+                      revalidateTag('comments')                                            
+}
+
+
+export async function likingcomment(id:string,itemid:string,kind:string){
+
+      const res=await fetch(`http://localhost:5000/comments/addcommentlike`,{ 
+                     method:'PUT'    
+                     , 
+                    cache:'default',
+                    headers:{'Content-Type': 'application/json'} ,
+                    body:JSON.stringify({id,
+                        itemid,
+                        kind,
+                        
+                    })       
+                           }
+                        )
+              if(!res.ok){
+                throw new Error('failed to like')
+              }     
+                      
+                     
+
+}

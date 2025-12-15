@@ -44,7 +44,7 @@ return(
                                   <p className="hover:underline hover:cursor-pointer"> {title}</p>
                             </div>
                             <Save id={id} type='review' ></Save>
-                              <div className=" w-[38%] sm:w-[20%] flex flex-row justify-around gap-[3px] self-end text-[3.5em]">
+                              <div className=" w-[40%] sm:w-[20%] flex flex-row justify-around gap-[3px] self-end text-[3.5em]">
                                           
                                               <div className="flex flex-row items-center font-bold  gap-[2px] sm:gap-[5px]">
                                               <ThumbsUp size={'1.5em'}></ThumbsUp>
@@ -56,15 +56,15 @@ return(
                                                   </div>
                                   <p > {date.toLocaleDateString('eng-us')}</p>
                               </div>
-                              <h1 className="w-full  text-center text-[9.5em] font-extrabold underline">  {title}  </h1>
-                              <div className="w-[85%] h-[300px] relative self-center mt-[10px]">                                     
+                              <h1 className="w-full  text-center mt-[10px] text-[9.5em] font-extrabold underline">  {title}  </h1>
+                              <div className="w-[85%] h-[300px] relative self-center mt-[20px]">                                     
                                        <Image fill alt={title} src={image} className="absolute top-0 "></Image>
                               </div>
-                              <p className="text-[5em] leading-normal break-words w-[85%] self-center mt-[20px]">
+                              <p className="text-[5em] leading-normal break-words w-[85%] self-center mt-[25px]">
                                   {content}
                               </p>
 
-                               <div className="flex flex-col w-full items-center justify-center p-2 bg-main mt-[20px] gap-[7px] text-white rounded-2xl">
+                               <div className="flex flex-col w-full items-center justify-center p-2 bg-main mt-[25px] gap-[7px] text-white rounded-2xl">
                                     <h1 className=" w-full text-center text-[6em] underline  font-bold">Summary</h1>
                                     <p className="  text-[4em] w-[75%] break-words text-center"> {summary}</p>
                                     <button className="  w-[70px] h-[70px]  sm:h-[55px] sm:w-[55px]  xl:h-[90px] xl:w-[90px] rounded-[180%] 
@@ -85,7 +85,7 @@ return(
                                        </div>
                                        
                                        <div className="flex flex-col items-center gap-[15px] mt-[10px] ">
-                                        <h2 className="text-[4em] text-main font-bold"> choose Your Score </h2>
+                                        <h2 className="text-[4.5em] text-main font-bold"> choose Your Score </h2>
                                            <Scores id={id}></Scores>
                                              
                                        </div>
