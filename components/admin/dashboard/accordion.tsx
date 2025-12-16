@@ -22,9 +22,9 @@ export function AccordionDemo() {
       defaultValue="item-1"
     >
       <AccordionItem value="item-1" >
-        <AccordionTrigger className=" text-[5.5em] xl:text-[7em] text-center justify-center items-center" >    <Newspaper></Newspaper> Posts</AccordionTrigger>
+        <AccordionTrigger className=" text-[5.5em] xl:text-[7em] text-center justify-center font-semibold items-center" >    <Newspaper></Newspaper> Posts</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-6 text-balance items-center justify-center text-[1em] xl:text-[1.5em]">
-          <Link className="hover:underline" href={'/dashboard/addpost'}>
+          <Link className="hover:underline " href={'/dashboard/addpost'}>
              Add Post
           </Link>
             <Link className="hover:underline" href={'/dashboard/posts?activepage=1&sort=all'}>

@@ -40,7 +40,9 @@ const handler = NextAuth({
           id: finduser._id.toString(),
           email: finduser.email,
           name:finduser.name,
-          image:finduser.image
+          image:finduser.image,
+          role:finduser.role
+          
         };
       },
     }),
@@ -52,6 +54,7 @@ const handler = NextAuth({
         token.id = user.id;
         token.name=user.name
          token.image=user.image
+         token.role=user.role as string
       }
             if (trigger === "update" && session?.image) {
                  token.image = session.image;   
@@ -63,11 +66,12 @@ const handler = NextAuth({
     },
 
     async session({ session, token }) {
-      if (!session.user) session.user = {}; 
+      if (!session.user) session.user ={}; 
 
       session.user.id = token.id;
       session.user.name=token.name
-      session.user.image=token.image
+      session.user.image=token.image as string
+      session.user.role=token.role
       return session;
     },
   },

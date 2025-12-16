@@ -1,8 +1,32 @@
-import { Header } from "@/components/header/header";
-import { Footer } from "@/components/footer/footer";
+'use client'
+
 import { HeaderDashboard } from "@/components/admin/headers/adminheader"
 import { Dashboard } from "@/components/admin/dashboard/dashboard";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { useEffect } from "react";
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
+  const {data,status}=useSession()
+  const router=useRouter()
+useEffect(()=>{
+  if(status==='loading') return
+    if(data?.user.role!=='admin'||status==='unauthenticated'){
+    router.push('/')
+    toast.warning('not allowed')
+    return
+  }
+
+},[data,status])
+  if (status === 'loading') {
+    return 
+  }
+
+  if (data?.user.role !== 'admin') {
+    return null
+  }
+
+
   return (
     <>
     <HeaderDashboard></HeaderDashboard>

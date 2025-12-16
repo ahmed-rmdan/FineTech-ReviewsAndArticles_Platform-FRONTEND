@@ -12,10 +12,9 @@ import { AccordionDemo } from "../dashboard/accordion";
 import { LogOut } from 'lucide-react';
 
 
-import Image from "next/image";
-
-
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
+import { toast } from "sonner";
 
 export function HeaderDashboard(){
     const router=useRouter()
@@ -47,6 +46,18 @@ function handlesearch(){
   setsearch(prev=>!prev)
 }
 
+async function handlesignout(){
+  const confirm=window.confirm('you are logging out are you sure ?')
+  if(!confirm){
+    return
+  }
+  router.push('/')
+await signOut()
+toast.info('you have been logged out')
+
+}
+
+
 if(width>=768){
 return(
            <nav className="flex flex-row xl:flex-row sticky  top-0  z-[10000]  min-w-full  p-5  
@@ -59,9 +70,9 @@ return(
                        FineTech
                 
               </Link>
-              <button className="w-[40%] flex flex-row justify-center items-center gap-[7px] font-bold ml-[10%]
+              <button onClick={handlesignout} className="w-[40%] flex flex-row justify-center items-center gap-[7px] font-bold ml-[10%]
                text-center sm:text-[4.5em] lg:text-[6em] hover:underline hover:cursor-pointer">
-                   <LogOut size={'1em'} ></LogOut> LogOut
+                   <LogOut size={'1em'}  ></LogOut> LogOut
               </button>
 
                                    
@@ -84,7 +95,7 @@ else {
                           </Link>
                           <button className="w-[40%] flex flex-row justify-center items-center gap-[5px] font-bold 
                                 text-center text-[4.8em] hover:underline hover:cursor-pointer">
-                                      <LogOut size={'1.5em'} ></LogOut> LogOut
+                                      <LogOut size={'1.5em'} onClick={handlesignout} ></LogOut> LogOut
                              </button>
                
                     </div>
@@ -103,11 +114,8 @@ else {
              </motion.div>: ''}
 
 
-             </AnimatePresence>
-         
+             </AnimatePresence>       
       
-          
-
                          
   </nav>
 

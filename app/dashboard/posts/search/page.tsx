@@ -7,8 +7,7 @@ import { Filter } from "@/components/global/filter"
 import { PostItemAdmin } from "@/components/admin/posts/postitem"
 import { Pages } from "@/components/global/pages"
 import type { post } from "@/types/types"
-import { useAppDispatch,useAppSelector } from "@/state/hook"
-
+import { EmptyPosts } from "@/components/global/emptyposts"
 
 export default  async function  PostControl({searchParams }:{searchParams:{activepage:string,sort:string,search:string}}){
 
@@ -30,7 +29,7 @@ export default  async function  PostControl({searchParams }:{searchParams:{activ
             <Filter type="blog" filter="searchpostsadmin" search={searchParams.search}></Filter>
                    </div>         
                       <div className="flex flex-col w-[99%] sm:w-[90%] xl:w-[75%] gap-[20px] items-center justify-around   ">
-                         { data.posts.map((elm,i)=>{
+                         { data.posts.length===0? <EmptyPosts></EmptyPosts> : data.posts.map((elm,i)=>{
                            return  <PostItemAdmin id={elm._id} key={i} title={elm.title} mainimage={elm.mainimage} date={new Date(elm.createdAt) } views={elm.views}></PostItemAdmin>
                          }) }
                         </div>         

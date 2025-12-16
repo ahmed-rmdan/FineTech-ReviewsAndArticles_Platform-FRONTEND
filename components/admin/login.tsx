@@ -1,4 +1,4 @@
-
+'use client'
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -11,10 +11,55 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-
-import Link from "next/link"
-
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { useAppDispatch } from "@/state/hook"
+import { useSession } from "next-auth/react"
 export function LoginAdmin() {
+const router=useRouter()
+const dispatch=useAppDispatch()
+const [loading,setloading]=useState<boolean>(false)
+const [error,seterror]=useState<string>('')
+const [iserror,setiserror]=useState<boolean>(false)
+const {data:session}=useSession()
+
+// async function onsubmit(e:React.FormEvent<HTMLFormElement>){
+//   e.preventDefault()
+//   const data=new FormData(e.currentTarget)
+//   console.log(data.get('username'))
+
+//   if(data.get('username')===''||data.get('password')===''){
+//               return
+//   }
+
+//  setloading(true)
+//   try{
+//     const res= await  signIn('credentials',{
+//     redirect:false,
+//         username:data.get('username') as string,
+//     password:data.get('password') as string,
+//   }
+
+// )
+//      if(!res?.ok){
+//         throw new Error(res?.error as string)    
+//             }
+
+            
+// setloading(false)
+// setiserror(false)
+// seterror('')
+//  router.push('/')
+//   }catch(err) {
+//    const errmes= err instanceof Error? err.message:'somthing went wrong'
+//    setiserror(true)
+//     seterror(errmes)
+//     setloading(false)
+//   }
+
+
+// }
+
   return (
     <Card className="w-full max-w-sm rounded-2xl">
       <CardHeader>
