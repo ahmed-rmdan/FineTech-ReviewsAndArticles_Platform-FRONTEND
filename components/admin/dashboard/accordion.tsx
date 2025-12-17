@@ -47,7 +47,7 @@ export function AccordionDemo() {
         <AccordionTrigger className="text-[5em] xl:text-[7em] text-center justify-center items-center" >    <MessageCircle></MessageCircle> Comments</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-6 text-balance items-center justify-center text-[1em] xl:text-[1.5em]">
 
-            <Link className="hover:underline" href={'/dashboard/comments'}>
+            <Link className="hover:underline" href={'/dashboard/comments?activepage=1'}>
                Comments Control
           </Link>
         </AccordionContent>
@@ -56,7 +56,7 @@ export function AccordionDemo() {
         <AccordionTrigger className="text-[5.5em] xl:text-[7em] text-center justify-center items-center" >    <Users></Users> Users</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-6 text-balance items-center justify-center text-[1em] xl:text-[1.5em]">
 
-            <Link className="hover:underline" href={'/dashboard/users'}>
+            <Link className="hover:underline" href={'/dashboard/users?activepage=1'}>
                Users Control
           </Link>
         </AccordionContent>

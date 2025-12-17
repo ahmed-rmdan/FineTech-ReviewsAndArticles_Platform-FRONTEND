@@ -105,6 +105,47 @@ export const Pages:FC<{activepage:number,noposts:number,types:string,sort:string
     </Pagination>
   )
  }
+ 
+  if(props.types==='commentsadmin'){
+       return (
+    <Pagination>
+      <PaginationContent>
+ {   curgrouppages !==1 && <PaginationItem>
+          <PaginationPrevious href={`/dashboard/comments?activepage=${(curgrouppages-1)*6}`} />
+         </PaginationItem>}
+       { arr.map(elm=>{
+        return <PaginationItem key={elm}>
+             <PaginationLink href={`/dashboard/comments?activepage=${elm}`} isActive={props.activepage===elm}>{elm}</PaginationLink>
+             </PaginationItem>
+                   }) 
+                       }
+  {  curgrouppages<nogrouppages&& <PaginationItem>
+          <PaginationNext href={`/dashboard/comments?activepage=${(curgrouppages*6)+1}`} />
+        </PaginationItem>}
+      </PaginationContent>
+    </Pagination>
+  )
+ }
+   if(props.types==='usersadmin'){
+       return (
+    <Pagination>
+      <PaginationContent>
+ {   curgrouppages !==1 && <PaginationItem>
+          <PaginationPrevious href={`/dashboard/users?activepage=${(curgrouppages-1)*6}`} />
+         </PaginationItem>}
+       { arr.map(elm=>{
+        return <PaginationItem key={elm}>
+             <PaginationLink href={`/dashboard/users?activepage=${elm}`} isActive={props.activepage===elm}>{elm}</PaginationLink>
+             </PaginationItem>
+                   }) 
+                       }
+  {  curgrouppages<nogrouppages&& <PaginationItem>
+          <PaginationNext href={`/dashboard/users?activepage=${(curgrouppages*6)+1}`} />
+        </PaginationItem>}
+      </PaginationContent>
+    </Pagination>
+  )
+ }
       
   
 }

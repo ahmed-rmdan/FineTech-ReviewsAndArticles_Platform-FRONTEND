@@ -100,3 +100,39 @@ export async function likingcomment(id:string,itemid:string,kind:string){
                      
 
 }
+
+export async function DeleteComment(id:string){
+
+       const res=await fetch('http://localhost:5000/comments/deletecomment',{
+        method:'PUT',
+        headers:{    'Content-Type': 'application/json'},
+        body:JSON.stringify({id})
+       })                             
+                       
+             if(!res.ok){
+                throw new Error('failed to connect')
+              }   
+              
+              revalidateTag('admincomments')
+                      
+                     
+
+}
+
+export async function BanUser(id:string){
+
+       const res=await fetch('http://localhost:5000/users/banuser',{
+        method:'PUT',
+        headers:{    'Content-Type': 'application/json'},
+        body:JSON.stringify({id})
+       })                             
+                       
+             if(!res.ok){
+                throw new Error('failed to connect')
+              }   
+              
+              revalidateTag('usersadmin')
+                      
+                     
+
+}

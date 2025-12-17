@@ -48,6 +48,18 @@ export type comment={
     itemid:string
     subcomments:subcomment[],
         createdAt:Date,
+  
+        
+    _id:string
+}
+
+export type user={
+    username:string,
+    email:string,
+    name:string,
+    image:string,
+    banned:boolean
+   createdAt:Date,       
     _id:string
 }
 
