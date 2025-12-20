@@ -119,14 +119,17 @@ export async function DeleteComment(id:string){
 
 }
 
-export async function BanUser(id:string){
+export async function BanUser(id:string,token:string){
 
        const res=await fetch('http://localhost:5000/users/banuser',{
         method:'PUT',
-        headers:{    'Content-Type': 'application/json'},
-        body:JSON.stringify({id})
+        headers:{    'Content-Type': 'application/json',
+          Authorization: `Bearer ` + token
+        },
+        body:JSON.stringify({id}),
+        
        })                             
-                       
+            const data=await res.json()           
              if(!res.ok){
                 throw new Error('failed to connect')
               }   

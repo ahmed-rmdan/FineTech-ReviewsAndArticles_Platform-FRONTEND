@@ -30,8 +30,12 @@ export function Profile() {
 
 
  async function  onclick(){
- await signOut({redirect:false})
+ 
   const confirm=window.confirm('you are logging out are you sure ?')
+  if(!confirm){
+   return;
+  } 
+  await signOut({redirect:false})
  router.push('/')
  toast.success('you have been logged out')
  }

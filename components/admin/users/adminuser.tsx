@@ -5,18 +5,23 @@ import { Ban } from 'lucide-react';
 import { toast } from "sonner"
 import { BanUser } from "@/actions/actions"
 import { UserCheck } from 'lucide-react';
+import { useSession } from "next-auth/react";
 export function UserAdmin({mainimage,username,id,date,banned}:{mainimage:string,username:string,id:string,date:Date,banned:boolean}){
 
-
-  async function handledelete(){{
+const {data}=useSession()
+  async function banuser(){{
    const state=!banned?'Ban':'unBan'
     const confirm=window.confirm( `You are going to ${state} this User are you sure ?`)
     
     if(!confirm){
          return
     }
+    if(!data){
+     return
+    }
     try{
-         await BanUser(id)
+       
+         await BanUser(id ,data.user.token as string)
          toast.success('user has been Updated ')
     }
     catch(err){
@@ -38,8 +43,8 @@ export function UserAdmin({mainimage,username,id,date,banned}:{mainimage:string,
              
             <div className="flex flex-row items-center gap-[10px]  sm:gap-[15px] xl:gap-[30px] ">
                    
-                      {!banned?<Ban onClick={handledelete} size={'6em'} color="#cb1b16" className="hover:cursor-pointer" ></Ban>:
-                    <UserCheck onClick={handledelete} size={'6em'} color="#cb1b16" className="hover:cursor-pointer" ></UserCheck>
+                      {!banned?<Ban onClick={banuser} size={'6em'} color="#cb1b16" className="hover:cursor-pointer" ></Ban>:
+                    <UserCheck onClick={banuser} size={'6em'} color="#cb1b16" className="hover:cursor-pointer" ></UserCheck>
                       }
                    
     

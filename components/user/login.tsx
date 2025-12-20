@@ -20,6 +20,7 @@ import googlelogo from '@/public/Google Logo Icon Gsuite HD.jpeg'
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
 
+
 export function CardLogin() {
 const router=useRouter()
 
@@ -120,7 +121,7 @@ seterror('')
       </CardContent>
       <CardFooter className="flex-col gap-2">
 
-        <Button variant="outline" className="w-full">
+        <Button onClick={()=>{signIn('google')}} variant="outline" className="w-full">
                <div className="w-[20px] h-[20px] relative">
                   <Image src={googlelogo} fill alt="google logo" className="w-full h-full absolute"></Image>
                 </div>  

@@ -13,7 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Controller } from "react-hook-form";
 import { useRouter } from "next/navigation"
-
+import { useSession } from "next-auth/react"
 
 
 
@@ -27,6 +27,8 @@ const router=useRouter()
     content:z.string(),
     mainslider:z.boolean()
   })
+  const {data:session}=useSession()
+
 
   type formfield=z.infer<typeof schema>
 
@@ -52,7 +54,10 @@ const router=useRouter()
  try{
       const res1= await fetch('http://localhost:5000/posts/createpost',{
          method:'POST',
-       headers:{    'Content-Type': 'application/json'},
+        
+       headers:{    'Content-Type': 'application/json',
+         Authorization: `Bearer ` + session?.user.token
+       },
                     body:JSON.stringify(
                          {title:data.title,description:data.description,content:data.content,mainslider:data.mainslider}
                     )

@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcrypt";
+import type { user } from "@/types/types";
+import GoogleProvider from "next-auth/providers/google"
 import { dbconnection } from "@/lib/database";
-
 const handler = NextAuth({
   session: {
     strategy: "jwt",
@@ -15,53 +15,62 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const database = await dbconnection();
-        const db = database.db();
-        console.log(credentials)
-          
-        const finduser = await db
-          .collection("users")
-          .findOne({ username: credentials?.username });
+        try{
+         const res=await fetch(`http://localhost:5000/users/signin`,{
+           method:'POST'
+          ,
+           headers:{'Content-Type': 'application/json'},
+           body:JSON.stringify({username:credentials?.username,password:credentials?.password})     
+         })
+         const data:user&{token:string,role:string,message:string}=await res.json()
+            if(!res.ok){
+              throw new Error(data.message as string)
+            }
 
-        if (!finduser) {
-          throw new Error(`username or password not right `);
-        }
-
-        const isequal = await bcrypt.compare(
-          credentials!.password,         
-          finduser.password             
-        );
-
-        if (!isequal) {
-          throw new Error(" password not right");
-        }
-
-        return {
-          id: finduser._id.toString(),
-          email: finduser.email,
-          name:finduser.name,
-          image:finduser.image,
-          role:finduser.role
+                 return {
+          id: data._id,
+          email: data.email,
+          name:data.name,
+          image:data.image,
+          role:data.role,
+          token:data.token
           
         };
+         
+        }catch(err){
+           const errmsg=err instanceof Error? err.message:'somthing went wrong'
+           throw new Error(errmsg)
+        }       
       },
     }),
+    GoogleProvider({
+      name:'google'
+      ,
+  clientId: process.env.GOOGLE_CLIENT_ID as string,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+  allowDangerousEmailAccountLinking: true,
+})
+
   ],
 
   callbacks: {
     async jwt({ token, user ,trigger,session}) {
+       
       if (user) {
-        token.id = user.id;
-        token.name=user.name
-         token.image=user.image
-         token.role=user.role as string
+              const db= (await dbconnection()).db()
+      const finduser=await db.collection('users').findOne({email:user.email})  
+        token.id = finduser?._id.toString() as string;
+        token.name=finduser?.name as string
+         token.image=finduser?.image as string
+         token.role=finduser?.role as string
+         token.token=finduser?.token as string
       }
             if (trigger === "update" && session?.image) {
                  token.image = session.image;   
               }
             if (trigger === "update" && session?.name) {
                  token.name = session.name;   
-              }              
+              }         
       return token;
     },
 
@@ -72,8 +81,31 @@ const handler = NextAuth({
       session.user.name=token.name
       session.user.image=token.image as string
       session.user.role=token.role
+      session.user.token=token.token
       return session;
     },
+      async signIn({ user, account }) {
+    if (account?.provider === "google") {
+      const db= (await dbconnection()).db()
+      const finduser=await db.collection('users').findOne({email:user.email})     
+      if (!finduser) {
+     await fetch('http://localhost:5000/users/creategoogleuser',{
+         method:'POST',
+       headers:{    'Content-Type': 'application/json'},
+                    body:JSON.stringify(
+         {username:user.email,email:user.email,name:user.name,image:user.image}
+                   )
+          })
+          return true
+      }
+      if(finduser.provider==='credentials'){
+        return false
+      }
+
+    }
+
+    return true
+  },
   },
 });
 

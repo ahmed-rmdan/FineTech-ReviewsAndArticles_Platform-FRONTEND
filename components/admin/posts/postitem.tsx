@@ -7,11 +7,11 @@ import { Eye } from 'lucide-react';
 
 import { toast } from "sonner"
 import { useRouter } from "next/navigation";
-
+import { useSession } from "next-auth/react";
 export   function PostItemAdmin({title,mainimage,date,id,views}
   :{title:string,mainimage:string,date:Date,id:string,views:number}) {
 const router= useRouter()
- 
+ const {data:session}=useSession()
   async function handledelete(){{
     const confirm=window.confirm( `You are deleting post:${title} parmently from the database are you sure ?`)
     
@@ -20,7 +20,9 @@ const router= useRouter()
     }
        const res=await fetch('http://localhost:5000/posts/deletepost',{
         method:'DELETE',
-        headers:{    'Content-Type': 'application/json'},
+        headers:{    'Content-Type': 'application/json',
+           Authorization: `Bearer ` + session?.user.token
+        },
         body:JSON.stringify({id})
        })  
        
