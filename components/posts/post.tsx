@@ -50,7 +50,7 @@ return(
                               <div className=" w-[90%] sm:w-[85%] h-[300px] relative self-center mt-[10px]">                                     
                                        <Image fill alt={props.title} src={props.image} className="absolute top-0 "></Image>
                               </div>
-                              <article className="text-[5em] leading-normal break-words w-[98%] sm:w-[90%] self-center mt-[20px] whitespace-pre-line  prose max-w-none">
+                              <article className="text-[5em] leading-normal break-words w-[98%] sm:w-[90%] self-center mt-5 whitespace-pre-line prose prose-slate max-w-none">
                                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                      {props.content}
                                 </ReactMarkdown>

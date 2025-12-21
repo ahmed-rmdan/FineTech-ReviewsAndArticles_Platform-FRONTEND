@@ -28,7 +28,7 @@ const router= useRouter()
         console.log(id)
        }
 
-        router.push(`/dashboard/reviews?activepage=1&sort=Newest&category=allreviews`)   
+        router.push(`/dashboard/reviews?activepage=1&sort=Newest&category=AllReviews`)   
        toast.success('review has been deleted ')
 
   }}
@@ -36,7 +36,7 @@ const router= useRouter()
   
   return (
        <div className="flex flex-row items-center  p-2 sm:p-6 justify-between  w-full bg-white h-[80px]   ">
-            <div className="flex flex-row items-center gap-[15px] ">
+            <div className="flex flex-row items-center w-[60%] gap-[5px] sm:gap-[15px] ">
                 <div className="relative w-[60px] sm:w-[90px] xl:w-[140px] h-[65px]">
                     <Image alt="postitemAdmin" fill src={mainimage}></Image>
                  </div>

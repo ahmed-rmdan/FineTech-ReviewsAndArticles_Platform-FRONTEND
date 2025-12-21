@@ -10,6 +10,8 @@ import { Star } from 'lucide-react';
 import { Like } from "../global/like";
 import { Save } from "../global/save";
 import { Scores } from "./scores";
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 
 export async function Review({title,image,date, content,summary,
@@ -57,16 +59,19 @@ return(
                                   <p > {date.toLocaleDateString('eng-us')}</p>
                               </div>
                               <h1 className="w-full  text-center mt-[10px] text-[9.5em] font-extrabold underline">  {title}  </h1>
-                              <div className="w-[85%] h-[300px] relative self-center mt-[20px]">                                     
+                              <div className="w-[95%] sm:w-[85%] h-[300px] relative self-center mt-[20px]">                                     
                                        <Image fill alt={title} src={image} className="absolute top-0 "></Image>
                               </div>
-                              <p className="text-[5em] leading-normal break-words w-[85%] self-center mt-[25px]">
-                                  {content}
-                              </p>
+                              <article className="text-[5em] leading-normal break-words w-[98%] sm:w-[90%] self-center mt-5 whitespace-pre-line prose prose-slate max-w-none">
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                     {content}
+                                </ReactMarkdown>
+                                  
+                              </article>
 
                                <div className="flex flex-col w-full items-center justify-center p-2 bg-main mt-[25px] gap-[7px] text-white rounded-2xl">
-                                    <h1 className=" w-full text-center text-[6em] underline  font-bold">Summary</h1>
-                                    <p className="  text-[4em] w-[75%] break-words text-center"> {summary}</p>
+                                    <h1 className=" w-full text-center text-[6.5em] underline  font-bold">Summary</h1>
+                                    <p className="  text-[5em] w-[90%] break-words text-center"> {summary}</p>
                                     <button className="  w-[70px] h-[70px]  sm:h-[55px] sm:w-[55px]  xl:h-[90px] xl:w-[90px] rounded-[180%] 
                                        border-2 border-[#cb1b16] text-[9em] 
                                            font-bold bg-white text-main">
@@ -74,7 +79,7 @@ return(
                                      </button>                                    
                                </div>
                                <div className=" w-full flex flex-col items-center mt-[20px] gap-[20px] ">
-                                       <h2 className="text-[5em] underline font-bold"> User Review</h2>
+                                       <h2 className="text-[5em] underline font-bold"> User Reviews</h2>
                                        <div className="flex flex-row items-center gap-[15px] ">
                                              <button className="  w-[50px] h-[50px]  sm:h-[55px] sm:w-[55px]  xl:h-[70px] xl:w-[70px] rounded-[180%] 
                                               border-4  text-[7em] 

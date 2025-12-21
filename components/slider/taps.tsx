@@ -33,7 +33,7 @@ useEffect(()=>{
 
 return(
        
-         <div className="flex flex-row items-center absolute bottom-[2.5%] sm:bottom-[4%] xl:bottom-[4.5%] right-[10%] w-[80%] h-[5%] gap-[3%] justify-center wrap-break-word ">
+         <div className="flex flex-row items-center absolute bottom-[1.5%] sm:bottom-[4%] xl:bottom-[4.5%] right-[10%] w-[80%] h-[5%] gap-[3%] justify-center wrap-break-word ">
 {                    posts.map((elm,i)=>{
                              
                      return(

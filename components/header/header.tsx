@@ -159,7 +159,7 @@ else {
              
                       <div className="flex w-[75%] gap-[10%] flex-row items-center justify-center  ">
                           <Link href={'/'}  className=" text-center  font-extrabold w-[50%] 
-                                text-[7em]  
+                                text-[8em]  
                                 hover:cursor-pointer ">
                                  FineTech
                 
@@ -188,11 +188,11 @@ else {
                 
                  <div className="flex flex-col w-full mt-[30px] min-h-[100%] items-center justify-start gap-[5%] text-[13px] 
               text-white font-semibold  ">
-                          <div className="flex flex-row justify-start h-[5%] w-[70%] items-center">
+                          {/* <div className="flex flex-row justify-start h-[5%] w-[70%] items-center">
                                 <Moon size={'2em'}></Moon>
                                
-                           </div>
-                      <div className="flex flex-col w-full      items-center gap-[55px]">
+                           </div> */}
+                      <div className="flex flex-col w-full  mt-[20px]  text-[1.25em]   items-center gap-[55px]">
 
                           <div className="flex flex-row gap-[5px] items-center">
                                 <House size={'1.4em'}></House>

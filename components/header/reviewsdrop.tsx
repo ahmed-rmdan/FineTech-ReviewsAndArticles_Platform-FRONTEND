@@ -4,7 +4,7 @@ import { Star } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
-const category=['SoftWare','Hardware','Electronics','Other']
+const category=['Software','Hardware','Electronics','Other']
 
 
 export function ReviewsDrop(){

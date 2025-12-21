@@ -27,7 +27,7 @@ export  function EditReviewForm({review}:{review:review}){
 
 const router=useRouter()
   const schema=z.object({
-    title:z.string().max(25,{message:'max length is 25 '}).min(1,{message:'title required'}),
+    title:z.string().max(30,{message:'max length is 30 '}).min(1,{message:'title required'}),
     category:z.string(),
     description:z.string(),
     mainimage:z.any(),
@@ -79,7 +79,7 @@ throw new Error(postdata.message as string)
  }
    if(data.mainimage===''){
     toast.success('review has been edited successfully')
-    return router.push('/dashboard/reviews?activepage=1&sort=all&category=allreviews')       
+    return router.push('/dashboard/reviews?activepage=1&sort=Newest&category=AllReviews')       
    }
 
   const imagefile:File=data.mainimage[0]
@@ -131,15 +131,15 @@ throw Error(postdata2.message as string)
                             <div className="grid gap-2 text-[2em]">
                            <Label  className="text-[2.5em]" htmlFor="category">Category</Label>                      
                                    <Controller name="category"  control={control} render={({field})=>(
-                                   <Select value={review.category}  onValueChange={(value)=>field.onChange(value)}>
+                                   <Select value={field.value} defaultValue={review.category} onValueChange={(value)=>field.onChange(value)}>
                                       <SelectTrigger className="w-[180px]">
                                        <SelectValue placeholder="Select" />
                                           </SelectTrigger>
                                           <SelectContent>
-                                                 <SelectItem value="software">SoftWare</SelectItem>
-                                                 <SelectItem value="hardware">Hardware</SelectItem>
-                                                 <SelectItem value="electronics">Electronics</SelectItem>
-                                                 <SelectItem value="other">Other</SelectItem>
+                                                 <SelectItem value="Software">Software</SelectItem>
+                                                 <SelectItem value="Hardware">Hardware</SelectItem>
+                                                 <SelectItem value="Electronics">Electronics</SelectItem>
+                                                 <SelectItem value="Other">Other</SelectItem>
                                              </SelectContent>
                                           </Select>
                                    )                                     

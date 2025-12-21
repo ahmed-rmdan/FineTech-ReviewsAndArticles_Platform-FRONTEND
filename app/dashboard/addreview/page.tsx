@@ -26,7 +26,7 @@ export default function AddReview(){
 
 const router=useRouter()
   const schema=z.object({
-    title:z.string().max(25,{message:'max length is 25 '}).min(1,{message:'title required'}),
+    title:z.string().max(30,{message:'max length is 30 '}).min(1,{message:'title required'}),
     category:z.string(),
     description:z.string(),
     mainimage:z.any(),
@@ -100,7 +100,7 @@ throw Error(reviewdata2.message as string)
  }
  
 
- router.push('/dashboard/reviews?activepage=1&sort=all&catagory=AllReviews')
+ router.push('/dashboard/reviews?activepage=1&sort=Newest&category=AllReviews')
 toast.success('review has been Created successfully')
 
   }
@@ -132,16 +132,14 @@ toast.success('review has been Created successfully')
                                        <SelectValue placeholder="Select" />
                                           </SelectTrigger>
                                           <SelectContent>
-                                                 <SelectItem value="software">SoftWare</SelectItem>
-                                                 <SelectItem value="hardware">Hardware</SelectItem>
-                                                 <SelectItem value="electronics">Electronics</SelectItem>
-                                                 <SelectItem value="other">Other</SelectItem>
+                                                 <SelectItem value="Software">Software</SelectItem>
+                                                 <SelectItem value="Hardware">Hardware</SelectItem>
+                                                 <SelectItem value="Electronics">Electronics</SelectItem>
+                                                 <SelectItem value="Other">Other</SelectItem>
                                              </SelectContent>
                                           </Select>
                                    )                                     
                                    } >
-
-
 
                                    </Controller>
 

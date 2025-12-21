@@ -36,7 +36,7 @@ export function CommentAdmin({mainimage,username,id,date,content}:{mainimage:str
                  </div>
                  <p className="font-bold text-[4em] sm:text-[3em]   lg:text-[5.5em] "> {username}</p>
             </div>
-             <Textarea disabled={true} className="w-[30%]" value={content}> </Textarea>
+             <Textarea disabled={true} className="w-[30%] text-[3em]" value={content}> </Textarea>
             <div className="flex flex-row items-center gap-[10px]  sm:gap-[15px] xl:gap-[30px] ">
                    
 
