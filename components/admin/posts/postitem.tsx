@@ -18,20 +18,29 @@ const router= useRouter()
     if(!confirm){
          return
     }
-       const res=await fetch('http://localhost:5000/posts/deletepost',{
+    console.log(session?.user.token)
+    try{
+            const res=await fetch('http://localhost:5000/posts/deletepost',{
         method:'DELETE',
         headers:{    'Content-Type': 'application/json',
            Authorization: `Bearer ` + session?.user.token
         },
         body:JSON.stringify({id})
        })  
-       
+        const data=await res.json()
        if(!res.ok){
-        console.log(id)
+        throw new Error(data.message as string)
        }
 
         router.push(`/dashboard/posts?activepage=1&sort=Newest`)   
        toast.success('post has been deleted ')
+
+    }catch(err){
+      const errmsg=err instanceof Error?err.message:'somthing went wrong'
+      toast.error(errmsg)
+      return
+    }
+
 
 
 

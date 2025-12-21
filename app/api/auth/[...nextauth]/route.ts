@@ -26,7 +26,7 @@ const handler = NextAuth({
             if(!res.ok){
               throw new Error(data.message as string)
             }
-
+            console.log(data.token)
                  return {
           id: data._id,
           email: data.email,
@@ -63,7 +63,7 @@ const handler = NextAuth({
         token.name=finduser?.name as string
          token.image=finduser?.image as string
          token.role=finduser?.role as string
-         token.token=finduser?.token as string
+         token.token=user.token as string
       }
             if (trigger === "update" && session?.image) {
                  token.image = session.image;   

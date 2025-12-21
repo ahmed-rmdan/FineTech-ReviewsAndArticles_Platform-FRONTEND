@@ -11,6 +11,9 @@ import { Newspaper } from 'lucide-react';
 import { Bookmark } from 'lucide-react';
 import { Like } from "../global/like";
 import { Save } from "../global/save";
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+
 export const Post:React.FC<{title:string,description:string,image:string,date:Date,content:string,likes:string[],comments:number,views:number,id:string}>=(props)=>{
     
 
@@ -43,13 +46,16 @@ return(
                                                   </div>
                                   <p > {props.date.toLocaleDateString('eng-us')}</p>
                               </div>
-                              <h1 className="w-full  text-center text-[8em] font-extrabold underline ">  {props.title}  </h1>
-                              <div className="w-[85%] h-[300px] relative self-center mt-[10px]">                                     
+                              <h1 className="w-full  text-center text-[8em] p-4 font-extrabold underline ">  {props.title}  </h1>
+                              <div className=" w-[90%] sm:w-[85%] h-[300px] relative self-center mt-[10px]">                                     
                                        <Image fill alt={props.title} src={props.image} className="absolute top-0 "></Image>
                               </div>
-                              <p className="text-[5em] leading-normal break-words w-[85%] self-center mt-[20px] whitespace-pre-line">
-                                  {props.content}
-                              </p>
+                              <article className="text-[5em] leading-normal break-words w-[98%] sm:w-[90%] self-center mt-[20px] whitespace-pre-line  prose max-w-none">
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                     {props.content}
+                                </ReactMarkdown>
+                                  
+                              </article>
                               <div className="w-[25%] items-center justify-center flex flex-row text-[5em] mt-[30px] gap-[8px] ">
                                    <Like type='post' likes={props.likes} id={props.id} ></Like>
                             </div>                      
