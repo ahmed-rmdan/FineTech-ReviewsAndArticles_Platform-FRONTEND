@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { motion } from "framer-motion";
 export const HomeItem:React.FC<{title:string,description:string,image:string,score:number,id:string}>=(props)=>{
     
 

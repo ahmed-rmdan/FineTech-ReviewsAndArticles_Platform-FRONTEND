@@ -84,9 +84,10 @@ return(
                                              <button className="  w-[50px] h-[50px]  sm:h-[55px] sm:w-[55px]  xl:h-[70px] xl:w-[70px] rounded-[180%] 
                                               border-4  text-[7em] 
                                            font-bold bg-white text-main border-[#cb1b16] ">
-                                              {data.avgscore}
+                                              {!data.avgscore?'0':data.avgscore.toFixed(1)}
                                            </button>
-                                           <p className="text-[4em] font-semibold">Based ON  <span className="font-extrabold text-main text-[1.2em] underline" >{data.usersno}</span>  Reviews</p>    
+                                           <p className="text-[4em] font-semibold">Based ON  <span className="font-extrabold text-main text-[1.2em] underline" >
+                                             {data.usersno}</span>  Reviews</p>    
                                        </div>
                                        
                                        <div className="flex flex-col items-center gap-[15px] mt-[10px] ">
