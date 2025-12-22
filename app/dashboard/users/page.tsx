@@ -6,7 +6,7 @@ import type { user} from "@/types/types"
 import { UserAdmin } from "@/components/admin/users/adminuser"
 
 
-export default  async function  CommentControl({searchParams }:{searchParams:{activepage:string}}){
+export default  async function  UsersControl({searchParams }:{searchParams:{activepage:string}}){
    
   const params=await searchParams
      

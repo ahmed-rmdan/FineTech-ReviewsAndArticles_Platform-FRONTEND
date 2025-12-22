@@ -65,8 +65,8 @@ export function AccordionDemo() {
         <AccordionTrigger className="text-[5.5em] xl:text-[7em] text-center justify-center items-center" >    <ChartPie></ChartPie> Analytsis</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-4 text-balance items-center justify-center text-[0.9em] xl:text-[1.5em]">
 
-            <Link className="hover:underline" href={'/dashboard/analytsis'}>
-               Analytsis
+            <Link className="hover:underline" href={'/dashboard/analysis'}>
+               Analysis
           </Link>
         </AccordionContent>
       </AccordionItem>      
