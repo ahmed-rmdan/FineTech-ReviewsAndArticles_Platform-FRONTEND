@@ -5,7 +5,7 @@ import { Eye } from 'lucide-react';
 import { ThumbsUp } from 'lucide-react';
 import { MessageCircle } from 'lucide-react';
 
-export const ItemPost:React.FC<{title:string,description:string,image:string,date:Date,watches:number,likes:number,comments:number,id:string}>=(props)=>{
+export function ItemPost(props:{title:string,description:string,image:string,date:Date,watches:number,likes:number,comments:number,id:string}){
     
 
 return(
