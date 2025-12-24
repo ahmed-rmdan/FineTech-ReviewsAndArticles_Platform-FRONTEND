@@ -6,11 +6,11 @@ global.fetch = jest.fn(() =>
   Promise.resolve({
     ok: true,
     json: () => Promise.resolve({ posts: [{title:"test title",comments:[''],likes:[''],view:0, description:"test description", mainimage:"http://testimage", _id:"test id"},
-    {title:"test title2",comments:[''],likes:[''],view:0, description:"test description2", mainimage:"http://testimage2",  _id:"test id2"},
+    {title:"test title2",comments:[''],likes:[''],view:0, description:"test description2", mainimage:"http://testimage2",  _id:"test id1"},
+    {title:"test title3",comments:[''],likes:[''],view:0, description:"test description3", mainimage:"http://testimage3", _id:"test id2"},
     {title:"test title3",comments:[''],likes:[''],view:0, description:"test description3", mainimage:"http://testimage3", _id:"test id3"},
-    {title:"test title3",comments:[''],likes:[''],view:0, description:"test description3", mainimage:"http://testimage3", _id:"test id3"},
-    {title:"test title3",comments:[''],likes:[''],view:0, description:"test description3", mainimage:"http://testimage3", _id:"test id3"},
-    {title:"test title3",comments:[''],likes:[''],view:0, description:"test description3", mainimage:"http://testimage3", _id:"test id3"}
+    {title:"test title3",comments:[''],likes:[''],view:0, description:"test description3", mainimage:"http://testimage3", _id:"test id4"},
+    {title:"test title3",comments:[''],likes:[''],view:0, description:"test description3", mainimage:"http://testimage3", _id:"test id5"}
     ] }),
   })) as jest.Mock;
 

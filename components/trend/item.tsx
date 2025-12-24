@@ -1,15 +1,16 @@
-
+'use client'
 import React from "react";
 import Image from "next/image";
 import { Eye } from "lucide-react";
 import Link from "next/link";
+import {motion} from 'framer-motion'
 export const ItemTrend:React.FC<{title:string,description:string,image:string,watches:number,id:string}>=(props)=>{
     
 
 
 
 return(
-           <div className=" h-[32%] w-[95%] sm:h-[33%] sm:w-[75%] lg:h-[80%] lg:w-[32%] bg-[#cb1b16] relative flex flex-col items-center rounded-[5px] text-white ">
+           <motion.div initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true,amount:0.5}} transition={{duration:3,type:'spring'}} className=" h-[32%] w-[95%] sm:h-[33%] sm:w-[75%] lg:h-[80%] lg:w-[32%] bg-[#cb1b16] relative flex flex-col items-center rounded-[5px] text-white ">
                   
                     
                      <div className="w-full min-h-[60%] relative rounded-[5px]  ">
@@ -42,7 +43,7 @@ return(
                      </div>
                    
                                    
-           </div>
+           </motion.div>
     )
 
 

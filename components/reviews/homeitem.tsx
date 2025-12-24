@@ -1,9 +1,9 @@
 
-
+'use client'
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import {motion} from 'framer-motion'
 
 
 export function HomeItem ({title,description,image,score,id}: {title:string,description:string,image:string,score:number,id:string}){
@@ -13,7 +13,9 @@ export function HomeItem ({title,description,image,score,id}: {title:string,desc
 
 
 return(
-           <div className="min-h-full min-w-full relative flex flex-col-reverse items-center text-[#cb1b16] rounded-[10px]">
+           <motion.div 
+           whileInView={{opacity:1}} viewport={{once:true,amount:0.5}} transition={{duration:3,type:'spring'}} initial={{ opacity: 0.2 }} 
+           className="min-h-full min-w-full relative flex flex-col-reverse items-center text-[#cb1b16] rounded-[10px]">
                     <Image alt={title} fill src={image} className=" absolute top-0 min-w-full min-h-full rounded-[10px] ">
                                
                     </Image>
@@ -35,7 +37,7 @@ return(
                                      {score.toString()}
                       </button>
                                    
-           </div>
+           </motion.div>
     )
 
 

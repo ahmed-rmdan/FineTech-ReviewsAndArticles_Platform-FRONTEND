@@ -1,15 +1,15 @@
-
+'use client'
 import React from "react";
 import Image from "next/image";
 import { Eye } from 'lucide-react';
 import { ThumbsUp } from 'lucide-react';
 import { MessageCircle } from 'lucide-react';
-
+import {motion} from 'framer-motion'
 export function ItemPost(props:{title:string,description:string,image:string,date:Date,watches:number,likes:number,comments:number,id:string}){
     
 
 return(
-           <div className=" h-[170px] sm:h-[200px] w-[99%] sm:w-[90%] xl:w-[60%]  bg-white relative flex flex-row items-center justify-between rounded-[5px] text-[#cb1b16] ">
+           <motion.div  initial={{opacity:0,y:50}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:0.5}} transition={{duration:3,type:'spring'}} className=" h-[170px] sm:h-[200px] w-[99%] sm:w-[90%] xl:w-[60%]  bg-white relative flex flex-row items-center justify-between rounded-[5px] text-[#cb1b16] ">
 
 
                 <div className="w-[30%] h-[95%]  relative rounded-[5px]  ">
@@ -52,7 +52,7 @@ return(
       
                    
                                    
-           </div>
+           </motion.div>
     )
 
 

@@ -119,7 +119,7 @@ return(
               <div className="flex flex-row relative items-center justify-center rounded-2xl w-[30%] gap-[13%]">
                {  !data && sign&&  <div  onMouseLeave={()=>{setsign(prev=>false)}}  onMouseEnter={()=>{setsign(prev=>true)}} 
                className=" absolute w-[300px] xl:w-[370px] h-[350px] 
-                     right-[70px]  xl:right-[150px]  2xl:right-[220px] top-[30px] rounded-2xl bg-[#e5e7eb]">
+                     right-[10px]  xl:right-[100px]  2xl:right-[180px] top-[30px] rounded-2xl bg-[#e5e7eb]">
                                        <CardLogin></CardLogin>
                                    </div>}
                    
