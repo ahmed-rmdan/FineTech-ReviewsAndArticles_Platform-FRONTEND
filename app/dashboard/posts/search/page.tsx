@@ -10,9 +10,12 @@ import type { post } from "@/types/types"
 import { EmptyPosts } from "@/components/global/emptyposts"
 
 export default  async function  PostControl({searchParams }:{searchParams:{activepage:string,sort:string,search:string}}){
+const params=await searchParams
+const sort=params.sort
+const activepage=params.activepage
+const search=params.search
 
-    
-  const res=await fetch(`http://localhost:5000/posts/searchadminposts?search=${searchParams.search}&page=${ searchParams.activepage}&sort=${searchParams.sort}`,{      
+  const res=await fetch(`${process.env.BACKEND_URL}/posts/searchadminposts?search=${search}&page=${activepage}&sort=${sort}`,{      
       cache:'no-store'        
                      })
                      if(!res.ok){
@@ -33,7 +36,7 @@ export default  async function  PostControl({searchParams }:{searchParams:{activ
                            return  <PostItemAdmin id={elm._id} key={i} title={elm.title} mainimage={elm.mainimage} date={new Date(elm.createdAt) } views={elm.views}></PostItemAdmin>
                          }) }
                         </div>         
-              <Pages activepage={Number(searchParams.activepage)} noposts={data.noposts} types="searchpostsadmin" search={searchParams.search}  sort={searchParams.sort}></Pages>
+              <Pages activepage={Number(activepage)} noposts={data.noposts} types="searchpostsadmin" search={search}  sort={sort}></Pages>
         
     </div>
   )

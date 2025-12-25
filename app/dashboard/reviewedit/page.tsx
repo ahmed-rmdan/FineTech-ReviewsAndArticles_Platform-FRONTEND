@@ -11,8 +11,9 @@ export default async function Editreview({searchParams}:{searchParams:{id:string
 
 
    const params=await searchParams
+   const id=params.id
 
-   const res=await fetch(`http://localhost:5000/reviews/getreview?id=${params.id}`,{      
+   const res=await fetch(`${process.env.BACKEND_URL}/reviews/getreview?id=${id}`,{      
        cache:'no-store',
        headers:{'Content-Type': 'application/json'}        
                       },)

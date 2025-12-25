@@ -52,7 +52,7 @@ const router=useRouter()
  }
 
  try{
-      const res1= await fetch('http://localhost:5000/posts/createpost',{
+      const res1= await fetch(`${process.env.BACKEND_URL}/posts/createpost`,{
          method:'POST',
         
        headers:{    'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ console.log(postdata.id)
 
   console.log(formdata.get('file'))
 
-      const res2= await fetch(`http://localhost:5000/posts/putpostimage?id=${postdata.id}`,{
+      const res2= await fetch(`${process.env.BACKEND_URL}/posts/putpostimage?id=${postdata.id}`,{
          method:'PUT',
                     body:formdata
  })
@@ -160,12 +160,9 @@ toast.success('POST has been Created successfully')
                                        </div>
                                    )}
                                    >
-                                   
-                                      
+                                                                        
                                    </Controller>
-                                    
-                                    
-                             
+                                                                                       
                                  {errors.root?.message&&<p className="text-main font-semibold text-[4em]  text-center" >* {errors.root?.message}</p>}
                                <Button disabled={isSubmitting} type='submit' className="w-[30%] self-center !text-[4em] mt-[10px] hover:cursor-pointer bg-main hover:bg-gray-500"
                                > {isSubmitting?'..submitting':'Submit'} </Button>                                                     

@@ -2,7 +2,7 @@
 import type { post } from "@/types/types"
 import { ItemSlider } from "./item"
 import { useState,useEffect } from "react"
-import {motion} from 'framer-motion'
+
 
 export function Itemgroup({posts}:{posts:post[]}){
 const [number,setnumber]=useState<number>(0)

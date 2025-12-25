@@ -12,8 +12,9 @@ export default async function Editpost({searchParams}:{searchParams:{id:string}}
 
 
    const params=await searchParams
+   const id=params.id
 
-   const res=await fetch(`http://localhost:5000/posts/getpost?id=${params.id}`,{      
+   const res=await fetch(`${process.env.BACKEND_URL}/posts/getpost?id=${id}`,{      
        cache:'no-store',
        headers:{'Content-Type': 'application/json'}        
                       },)

@@ -1,13 +1,10 @@
 'use client'
-import { Button } from "@/components/ui/button"
+
 import {
   Card,
-  CardAction,
   CardContent,
-  CardDescription,
   CardFooter,
-  CardHeader,
-  CardTitle,
+ 
 } from "@/components/ui/card"
 
 import Image from "next/image"
@@ -25,7 +22,7 @@ import { useRef } from "react"
 
 export function Profile() {
   const router=useRouter()
-  const {data,status,update}=useSession()
+  const {data,update}=useSession()
   const file=useRef<null|HTMLInputElement>(null)
 
 
@@ -65,7 +62,7 @@ const selectedfile=ev.target.files[0]
     console.log(formdata.get('file'))
 
      try{
-    const res= await fetch(`http://localhost:5000/users/putuserimage?id=${userid}`,{
+    const res= await fetch(`${process.env.BACKEND_URL}/users/putuserimage?id=${userid}`,{
          method:'PUT',
                     body:formdata
                 })

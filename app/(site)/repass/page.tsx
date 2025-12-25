@@ -23,7 +23,7 @@ if(!emailvalue||emailvalue===''||!emailvalue.includes('@')){
  setloading(true)
   try{
      
-const res= await fetch(`http://localhost:5000/users/resetpass`,{
+const res= await fetch(`${process.env.BACKEND_URL}/users/resetpass`,{
          method:'PUT',
                     body:JSON.stringify({email:emailvalue})
                     ,

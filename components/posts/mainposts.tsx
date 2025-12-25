@@ -9,7 +9,7 @@ import type { post } from "@/types/types";
 import { AllPostsButton } from "./allpostsbut";
 export async function MainPosts(){
     
-            const res=await fetch(`http://localhost:5000/posts/getposts?page=1&sort=Newest`,{      
+            const res=await fetch(`${process.env.BACKEND_URL}/posts/getposts?page=1&sort=Newest`,{      
                     cache:'no-store',
                     headers:{'Content-Type': 'application/json'}        
                            })

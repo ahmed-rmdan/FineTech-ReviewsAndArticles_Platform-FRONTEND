@@ -6,11 +6,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useRouter } from "next/navigation"
+
 
 
 export  function SelectCategory({value,type,search}:{value:string,type:string,search?:string}){
-const router=useRouter()
+
 
 function selectcatgory(value:string){
 if(type==='admin'){

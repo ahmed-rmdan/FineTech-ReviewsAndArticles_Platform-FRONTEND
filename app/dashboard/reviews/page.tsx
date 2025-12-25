@@ -11,8 +11,11 @@ import { SelectCategory } from "@/components/global/select"
 
 export default async function ReviewsControl({searchParams }:{searchParams:{activepage:string,sort:string,category:string}}){
   const params =await searchParams
+  const activepage=params.activepage
+  const sort=params.sort
+  const category=params.category
   console.log(params.category)
-  const res=await fetch(`http://localhost:5000/reviews/getreviews?page=${params.activepage}&sort=${params.sort}&category=${params.category}`,{      
+  const res=await fetch(`${process.env.BACKEND_URL}/reviews/getreviews?page=${activepage}&sort=${sort}&category=${category}`,{      
       cache:'no-store'        
                      })
                      if(!res.ok){
@@ -22,13 +25,13 @@ export default async function ReviewsControl({searchParams }:{searchParams:{acti
   return(
     <div className=" min-w-full sm:min-w-[75%]  flex-col   flex items-center justify-center p-4 gap-[10px] sm:gap-[15px] " >
          <div className="w-full text-[0.9em] xl:tex-[1em] flex items-center justify-center">
-            <SelectCategory value={params.category} type="admin"></SelectCategory>
+            <SelectCategory value={category} type="admin"></SelectCategory>
          </div>
           
        <div className="flex flex-row w-full sm:w-full lg:w-[90%] xl:w-[70%] justify-center items-center h-[55px] sm:h-[80px] gap-[11px] sm:gap-[20px]">
              
              <Searchinput type="reviewsadmin"></Searchinput>
-            <Filter type="reviews" filter="reviewsadmin" category={params.category}></Filter>
+            <Filter type="reviews" filter="reviewsadmin" category={category}></Filter>
        </div>         
         <div className="flex flex-col w-[99%] sm:w-[90%] xl:w-[75%] gap-[20px] items-center justify-around   ">
           {data.reviews.map(elm=>{
@@ -36,7 +39,7 @@ export default async function ReviewsControl({searchParams }:{searchParams:{acti
           })}
 
        </div>         
-             <Pages activepage={Number(params.activepage)} noposts={data.noreviews} types="reviewsadmin" category={params.category} sort={params.sort}></Pages>
+             <Pages activepage={Number(activepage)} noposts={data.noreviews} types="reviewsadmin" category={category} sort={sort}></Pages>
         
     </div>
   )

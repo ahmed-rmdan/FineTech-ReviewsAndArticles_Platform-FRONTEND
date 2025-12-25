@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 export default async function Saved({searchParams}:{searchParams:{id:string}}) {
  const params=await searchParams
-
+const id= params.id
  
 
-        const res=await fetch(`http://localhost:5000/users/getsaves?id=${params.id}`,{
+        const res=await fetch(`${process.env.BACKEND_URL}/users/getsaves?id=${id}`,{
               headers:{'Content-Type': 'application/json'},
               next:{tags:['saved']},
               cache:'no-store'
@@ -32,7 +32,7 @@ const empty=<div className="flex flex-col items-center py-20 text-center text-gr
     No Saved Items Yet
   </h2>
   <p className="text-sm text-main">
-    You haven’t saved any posts or reviews yet. Start exploring and tap 🔖 to save posts or reviews you like.
+    You havent saved any posts or reviews yet. Start exploring and tap 🔖 to save posts or reviews you like.
   </p>
 </div>
 

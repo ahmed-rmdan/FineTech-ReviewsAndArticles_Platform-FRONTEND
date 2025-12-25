@@ -9,21 +9,25 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Spinner } from "@/components/ui/spinner"
 import type { post } from "@/types/types";
+import { useSearchParams } from "next/navigation";
 
-export default function Blog({searchParams }:{searchParams:{sort:string,search:string}}) {
+export default function Blog() {
 
-  const params=searchParams
+ 
 
 const[loading,setloading]=useState<boolean>(false)  
 const [page,setpage]=useState<number>(1)
 const [scroll,setscroll]=useState(0)
 const [posts,setposts]=useState<post[]>([])
- const[empty,setempty]=useState<boolean>(false)  
+ const[empty,setempty]=useState<boolean>(false)
+ const searchParamsHook=useSearchParams()
+ const search=searchParamsHook.get('search')||''
+ const sort=searchParamsHook.get('sort')||''  
 useEffect(()=>{
 
   async function getscrollpages(){
        setloading(true)
-      const res=await fetch(`http://localhost:5000/posts/searchadminposts?search=${searchParams.search}&page=${page}&sort=${searchParams.sort}`,{
+      const res=await fetch(`${process.env.BACKEND_URL}/posts/searchadminposts?search=${search}&page=${page}&sort=${sort}`,{
         cache:'no-store'
       })
       if(!res.ok){
@@ -90,12 +94,12 @@ const result=(!empty)?posts.map(elm=>{
                   
                     </div>   }
                      <div className=" h-[15px]  md:h-[35px] xl:h-[55px] p-4 sm:p-6  lg:p-7 self-end mt-[20px] mr-[12%]  flex items-center justify-center text-[4.5em] font-bold rounded-[5px] text-white bg-main">
-                                Search : {params.search}
+                                Search : {search}
                     </div>
       <div className="flex flex-row w-full sm:w-[85%] lg:w-[70%] 2xl:w-[55%] justify-center items-center h-[55px] sm:h-[80px] gap-[11px] sm:gap-[20px]">
 
             <Searchinput type="searchposts"></Searchinput>
-           <Filter filter="searchposts" type="blog" search={params.search}></Filter>
+           <Filter filter="searchposts" type="blog" search={search}></Filter>
       </div>
                <div className="flex flex-col   w-full 
             items-center text-white bg-[#e5e7eb] text-[2.5px] sm:text-[3px] p-4  lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]    ">

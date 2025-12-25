@@ -2,13 +2,12 @@
 
 
 
-import React from "react";
-import { ItemTrend } from "./item";
+
 import type { post } from "@/types/types";
 import { TrendsRender } from "./trendsrender";
 export async function Trends(){
     
-      const res=await fetch(`http://localhost:5000/posts/gettopreadingposts`,{      
+      const res=await fetch(`${process.env.BACKEND_URL}/posts/gettopreadingposts`,{      
               cache:'no-store',
               headers:{'Content-Type': 'application/json'}        
                      })

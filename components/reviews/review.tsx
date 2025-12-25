@@ -1,5 +1,5 @@
 
-import React from "react";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ThumbsUp } from 'lucide-react';
@@ -20,7 +20,7 @@ export async function Review({title,image,date, content,summary,
    score:number,likes:string[],comments:number,id:string
   }){
 
-         const res=await fetch(`http://localhost:5000/users/getscores?id=${id}`,{             
+         const res=await fetch(`${process.env.BACKEND_URL}/users/getscores?id=${id}`,{             
                     cache:'default',
                     headers:{'Content-Type': 'application/json'} ,
                     next:{tags:['userscore']}

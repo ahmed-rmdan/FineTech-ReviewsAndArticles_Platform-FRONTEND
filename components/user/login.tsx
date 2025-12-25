@@ -18,7 +18,7 @@ import { useState } from "react"
 import Image from "next/image"
 import googlelogo from '@/public/Google Logo Icon Gsuite HD.jpeg'
 import { useRouter } from "next/navigation"
-import { useSession } from "next-auth/react"
+
 
 
 export function CardLogin() {

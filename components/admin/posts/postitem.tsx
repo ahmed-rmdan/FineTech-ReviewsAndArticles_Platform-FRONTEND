@@ -20,7 +20,7 @@ const router= useRouter()
     }
     console.log(session?.user.token)
     try{
-            const res=await fetch('http://localhost:5000/posts/deletepost',{
+            const res=await fetch(`${process.env.BACKEND_URL}/posts/deletepost`,{
         method:'DELETE',
         headers:{    'Content-Type': 'application/json',
            Authorization: `Bearer ` + session?.user.token

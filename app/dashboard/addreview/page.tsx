@@ -62,7 +62,7 @@ console.log('vreating')
 console.log(data.category)
 
  try{
-      const res1= await fetch('http://localhost:5000/reviews/createreview',{
+      const res1= await fetch(`${process.env.BACKEND_URL}/reviews/createreview`,{
          method:'POST',
        headers:{    'Content-Type': 'application/json'},
                     body:JSON.stringify(
@@ -82,7 +82,7 @@ console.log(reviewdata.id)
 
   console.log(formdata.get('file'))
 
-      const res2= await fetch(`http://localhost:5000/reviews/putreviewimage?id=${reviewdata.id}`,{
+      const res2= await fetch(`${process.env.BACKEND_URL}/reviews/putreviewimage?id=${reviewdata.id}`,{
          method:'PUT',
                     body:formdata
  })

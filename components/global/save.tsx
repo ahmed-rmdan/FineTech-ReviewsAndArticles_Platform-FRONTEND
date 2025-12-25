@@ -1,11 +1,11 @@
 'use client'
 
-import { ThumbsUp } from "lucide-react"
+
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { useAppSelector } from "@/state/hook"
-import { useState } from "react"
+
 import { useAppDispatch } from "@/state/hook"
 import { useractions } from "@/state/state"
 import { Bookmark } from "lucide-react"
@@ -15,7 +15,7 @@ import { saveing } from "@/actions/actions"
 
 export function Save({id,type}:{id:string,type:'post'|'review'}){
 const dispatch=useAppDispatch()
-const {data,update}=useSession()
+const {data}=useSession()
 
 const saves=useAppSelector(state=> state.user.saves)
 const router=useRouter()

@@ -5,7 +5,7 @@ import { Likes } from "@/components/admin/analysis/likes"
 export const dynamic = 'force-dynamic';
 export default  async function  Analysis(){
    
-            const res=await fetch(`http://localhost:5000/getreport`,{                          
+            const res=await fetch(`${process.env.BACKEND_URL}/getreport`,{                          
                     headers:{'Content-Type': 'application/json'}        
                            })
                const data:{postsnop:number,reviewsnop:number,postslikes:number,reviewslikes:number,postsviews:number,reviewsviews:number,allviews:number}=await res.json()

@@ -36,7 +36,7 @@ async function onsubmit(e:React.FormEvent<HTMLFormElement>){
  setloading(true)
   try{
   
-      const res= await fetch(`http://localhost:5000/users/newpass`,{
+      const res= await fetch(`${process.env.BACKEND_URL}/users/newpass`,{
          method:'PUT',
                     body:JSON.stringify({email,token,newpass:password})
                     ,

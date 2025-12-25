@@ -15,7 +15,7 @@ export function ReviewsDrop(){
 return(
 
          <div className="flex flex-row gap-[5px] items-center ">
-                      <Star size={'1.4em'} fill="white"></Star>
+                      <Star size={'1.4em'} ></Star>
             <Link href={'/reviews?sort=Newest&category=AllReviews'}  onMouseEnter={()=>setonhover(true)}  onClick={()=>location.href='/reviews?sort=Newest&category=AllReviews'}
                        className="hover:underline hover:cursor-pointer text-[1.05em]"> Reviews</Link>
             { onhover && <div onMouseLeave={()=>setonhover(false)} className=" absolute  top-[70px] left-[150px]  lg:left-[200px]  xl:left-[300px] 2xl:left-[410px] flex flex-col

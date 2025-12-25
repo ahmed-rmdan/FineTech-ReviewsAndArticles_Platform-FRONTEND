@@ -11,19 +11,22 @@ import { useEffect } from "react";
 import type { review } from "@/types/types";
 
 import { Spinner } from "@/components/ui/spinner";
+import { useSearchParams } from "next/navigation";
 
-
-export default  function ReviewsSearch({searchParams}:{searchParams:{sort:string,category:string,search:string}}) {
+export default  function ReviewsSearch() {
 const[loading,setloading]=useState<boolean>(false)  
 const [page,setpage]=useState<number>(1)
 const [scroll,setscroll]=useState(0)
 const [reviews,setreviews]=useState<review[]>([])
 const [empty,setempty]=useState<boolean>(false)
-
+const searchParamsHook=useSearchParams()
+const search=searchParamsHook.get('search')||''
+const category=searchParamsHook.get('category')||''
+const sort=searchParamsHook.get('sort')||''
 useEffect(()=>{
   async function getscrollpages(){
        setloading(true)
-      const res=await fetch(`http://localhost:5000/reviews/getsearchreviews?page=${page}&sort=${searchParams.sort}&category=${searchParams.category}&search=${searchParams.search}`,{
+      const res=await fetch(`${process.env.BACKEND_URL}/reviews/getsearchreviews?page=${page}&sort=${sort}&category=${category}&search=${search}`,{
         cache:'no-store'
       })
       if(!res.ok){
@@ -88,13 +91,13 @@ const result=(!empty)?    reviews.map(elm=>{
                   
                     </div>   }
                       <div className=" h-[15px]  md:h-[35px] xl:h-[55px] p-4 sm:p-6  lg:p-7 self-end mt-[20px] mr-[12%]  flex items-center justify-center text-[4.5em] font-bold rounded-[5px] text-white bg-main">
-                                Search : {searchParams.search}
+                                Search : {search}
                     </div>                   
-     <SelectCategory value={searchParams.category} type="searchreviews" search={searchParams.search}></SelectCategory>
+     <SelectCategory value={category} type="searchreviews" search={search}></SelectCategory>
       <div className="flex flex-row w-full sm:w-[85%] lg:w-[70%] 2xl:w-[55%] justify-center items-center h-[55px] sm:h-[80px] gap-[11px] sm:gap-[20px]">
            
             <Searchinput type="reviews"></Searchinput>
-           <Filter filter="reviews" type="searchreviews" category={searchParams.category} search={searchParams.search} ></Filter>
+           <Filter filter="reviews" type="searchreviews" category={category} search={search} ></Filter>
       </div>
                <section className="flex flex-col   w-full 
             items-center text-white bg-[#e5e7eb] text-[2.5px] sm:text-[3px] p-4  lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]    ">

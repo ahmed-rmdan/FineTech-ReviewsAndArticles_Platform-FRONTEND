@@ -23,7 +23,7 @@ const[loading,setloading]=useState<boolean>(false)
 const [page,setpage]=useState<number>(1)
 const [scroll,setscroll]=useState(0)
 const [reviews,setreviews]=useState<review[]>([])
-
+ const backendUrl = process.env.NODE_ENV === 'production' ? process.env.BACKEND_URL : 'http://localhost:5000'
 useEffect(()=>{
   setpage(1);
   setreviews([]);
@@ -32,7 +32,7 @@ useEffect(()=>{
 useEffect(()=>{
   async function getscrollpages(){
        setloading(true)
-      const res=await fetch(`http://localhost:5000/reviews/getreviews?page=${page}&sort=${sort}&category=${category}`,{
+      const res=await fetch(`${backendUrl}/reviews/getreviews?page=${page}&sort=${sort}&category=${category}`,{
         cache:'no-store'
       })
       if(!res.ok){
@@ -55,24 +55,22 @@ getscrollpages()
 },[page, sort, category])
 
 useEffect(()=>{
+  const handleScroll = () => {
+    const scrolly = window.scrollY
+    setscroll(scrolly)
+    
+    let scrollpage
+    if(window.innerWidth > 425){
+      scrollpage = Math.ceil(scrolly / 770)
+    } else {
+      scrollpage = Math.ceil(scrolly / 600)
+    }
+    setpage(prev => prev < scrollpage ? prev + 1 : prev)
+  }
 
- window.addEventListener('scroll',()=>{
-           const scrolly=window.scrollY
-           setscroll(scrolly)
-          
-    }  
- )
- let scrollpage
-
- if(window.innerWidth>425){
-  scrollpage=Math.ceil(scroll/750)
- }else{
- scrollpage=Math.ceil(scroll/600)
- }
-setpage(prev=>prev<scrollpage?prev+1:prev)
- return ()=>{}
-
-},[scroll])
+  window.addEventListener('scroll', handleScroll)
+  return () => window.removeEventListener('scroll', handleScroll)
+}, [])
 
 
   return (

@@ -1,7 +1,7 @@
 'use server'
 import { revalidateTag } from "next/cache"
 export async function saveing(id:string,itemid:string,kind:string){
-      const res=await fetch(`http://localhost:5000/users/addsave`,{ 
+      const res=await fetch(`${process.env.BACKEND_URL}/users/addsave`,{ 
                      method:'POST'    
                      , 
                     cache:'default',
@@ -20,7 +20,7 @@ export async function saveing(id:string,itemid:string,kind:string){
 }
 
 export async function liking(id:string,itemid:string,kind:string){
-      const res=await fetch(`http://localhost:5000/users/addlike`,{ 
+      const res=await fetch(`${process.env.BACKEND_URL}/users/addlike`,{ 
                      method:'POST'    
                      , 
                     cache:'default',
@@ -39,7 +39,7 @@ export async function liking(id:string,itemid:string,kind:string){
 }
 
 export async function addcomment(userid:string,itemid:string,content:string){
-      const res=await fetch(`http://localhost:5000/comments/addcomment`,{ 
+      const res=await fetch(`${process.env.BACKEND_URL}/comments/addcomment`,{ 
                      method:'POST'    
                      , 
                     headers:{'Content-Type': 'application/json'} ,
@@ -60,7 +60,7 @@ export async function addcomment(userid:string,itemid:string,content:string){
 }
 
 export async function addsubcomment(userid:string,itemid:string,content:string,commentid:string){
-      const res=await fetch(`http://localhost:5000/comments/addsubcomment`,{ 
+      const res=await fetch(`${process.env.BACKEND_URL}/comments/addsubcomment`,{ 
                      method:'POST'    
                      , 
                     headers:{'Content-Type': 'application/json'} ,
@@ -81,7 +81,7 @@ export async function addsubcomment(userid:string,itemid:string,content:string,c
 
 export async function likingcomment(id:string,itemid:string,kind:string){
 
-      const res=await fetch(`http://localhost:5000/comments/addcommentlike`,{ 
+      const res=await fetch(`${process.env.BACKEND_URL}/comments/addcommentlike`,{ 
                      method:'PUT'    
                      , 
                     cache:'default',
@@ -103,7 +103,7 @@ export async function likingcomment(id:string,itemid:string,kind:string){
 
 export async function DeleteComment(id:string){
 
-       const res=await fetch('http://localhost:5000/comments/deletecomment',{
+       const res=await fetch(`${process.env.BACKEND_URL}/comments/deletecomment`,{
         method:'PUT',
         headers:{    'Content-Type': 'application/json'},
         body:JSON.stringify({id})
@@ -121,7 +121,7 @@ export async function DeleteComment(id:string){
 
 export async function BanUser(id:string,token:string){
 
-       const res=await fetch('http://localhost:5000/users/banuser',{
+       const res=await fetch(`${process.env.BACKEND_URL}/users/banuser`,{
         method:'PUT',
         headers:{    'Content-Type': 'application/json',
           Authorization: `Bearer ` + token

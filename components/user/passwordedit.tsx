@@ -22,7 +22,7 @@ import { toast } from "sonner"
 
 
 export function PassEdit(){
-const {data,update}=useSession()
+const {data}=useSession()
    
 const [loading,setloading]=useState<boolean>(false)
 const [error,seterror]=useState<string>('')
@@ -43,7 +43,7 @@ console.log(data?.user.id)
  setloading(true)
   try{
      
-const res= await fetch(`http://localhost:5000/users/updatepass`,{
+const res= await fetch(`${process.env.BACKEND_URL}/users/updatepass`,{
                      method:'PUT',
                     body:JSON.stringify({newpass,pass:formdata.get('password'),id:data?.user.id})
                     ,

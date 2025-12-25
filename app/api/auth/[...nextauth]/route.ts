@@ -89,7 +89,7 @@ const handler = NextAuth({
       const db= (await dbconnection()).db()
       const finduser=await db.collection('users').findOne({email:user.email})     
       if (!finduser) {
-     await fetch('http://localhost:5000/users/creategoogleuser',{
+     await fetch(`${process.env.BACKEND_URL}/users/creategoogleuser`,{
          method:'POST',
        headers:{    'Content-Type': 'application/json'},
                     body:JSON.stringify(

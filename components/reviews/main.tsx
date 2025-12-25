@@ -2,13 +2,13 @@
 'use server'
 
 
-import React from "react";
+
 import { HomeItem } from "./homeitem";
 import type { review } from "@/types/types";
 
 export async function MainReviews(){
  
-     const res=await fetch('http://localhost:5000/reviews/gethomereviews',{
+     const res=await fetch(`${process.env.BACKEND_URL}/reviews/gethomereviews`,{
         headers:{    'Content-Type': 'application/json'},
 
        })  

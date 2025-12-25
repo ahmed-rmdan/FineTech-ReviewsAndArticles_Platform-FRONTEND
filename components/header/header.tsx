@@ -25,9 +25,7 @@ import { House } from 'lucide-react';
 import { Search } from 'lucide-react';
 import { Newspaper } from 'lucide-react';
 import { Star } from 'lucide-react';
-import { Sun } from 'lucide-react';
-import { Moon } from 'lucide-react';
-import { User } from 'lucide-react';
+
 import Image from "next/image";
 import { Profile } from "../user/profile";
 
@@ -200,12 +198,12 @@ else {
                            </div>
                               <div className="flex flex-row gap-[5px] items-center">
                                 <Newspaper size={'1.4em'}></Newspaper>
-                               <Link href={'/blog?sort=Newest'}  onClick={()=>{handlenavigate('3')}} className="hover:underline hover:cursor-pointer text-[1.1em]" > Blog</Link>
+                               <a href={'/blog?sort=Newest'}  className="hover:underline hover:cursor-pointer text-[1.1em]" > Blog</a>
                            </div>
                            
                               <div className="flex flex-row gap-[5px] items-center">
-                                <Star size={'1.4em'} fill="white"></Star>
-                               <Link  href={'/reviews?sort=Newest&category=AllReviews'}  className="hover:underline hover:cursor-pointer text-[1.05em]"> Reviews</Link>
+                                <Star size={'1.4em'} ></Star>
+                               <a  href={'/reviews?sort=Newest&category=AllReviews'}  className="hover:underline hover:cursor-pointer text-[1.05em]"> Reviews</a>
                            </div>                                    
                       </div>
                   { !data  && <div className="flex flex-col w-full border-t-2 p-7   text-[1.1em]  items-center gap-[50px]">

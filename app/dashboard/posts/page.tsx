@@ -7,14 +7,16 @@ import { Filter } from "@/components/global/filter"
 import { PostItemAdmin } from "@/components/admin/posts/postitem"
 import { Pages } from "@/components/global/pages"
 import type { post } from "@/types/types"
-import { useAppDispatch,useAppSelector } from "@/state/hook"
+
 
 
 export default  async function  PostControl({searchParams }:{searchParams:{activepage:string,sort:string}}){
    
   const params=await searchParams
-     
-  const res=await fetch(`http://localhost:5000/posts/getposts?page=${ params.activepage}&sort=${params.sort}`,{      
+  const sort=params.sort
+  const activepage=params.activepage
+
+  const res=await fetch(`${process.env.BACKEND_URL}/posts/getposts?page=${activepage}&sort=${sort}`,{      
       cache:'no-store'        
                      })
                      if(!res.ok){

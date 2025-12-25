@@ -10,7 +10,7 @@ export default  async function  CommentControl({searchParams }:{searchParams:{ac
    
   const params=await searchParams
      
-  const res=await fetch(`http://localhost:5000/comments/getadmincomments?page=${params.activepage}`,{      
+  const res=await fetch(`${process.env.BACKEND_URL}/comments/getadmincomments?page=${params.activepage}`,{      
             cache:'no-store',
             next:{tags:['admincomments']}        
                      })

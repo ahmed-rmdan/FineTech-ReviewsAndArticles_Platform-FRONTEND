@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 export default async function Liked({searchParams}:{searchParams:{id:string}}) {
 
  const params=await searchParams
-
+const id= params.id
  
 
-        const res=await fetch(`http://localhost:5000/users/getlikes?id=${params.id}`,{
+        const res=await fetch(`${process.env.BACKEND_URL}/users/getlikes?id=${id}`,{
               headers:{'Content-Type': 'application/json'},
               next:{tags:['liked']}
         })

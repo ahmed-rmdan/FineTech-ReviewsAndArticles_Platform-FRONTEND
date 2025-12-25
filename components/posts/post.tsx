@@ -2,13 +2,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Eye } from 'lucide-react';
+
 import { ThumbsUp } from 'lucide-react';
 import { MessageCircle } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
 import { House } from 'lucide-react';
 import { Newspaper } from 'lucide-react';
-import { Bookmark } from 'lucide-react';
+
 import { Like } from "../global/like";
 import { Save } from "../global/save";
 import ReactMarkdown from 'react-markdown'

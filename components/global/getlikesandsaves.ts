@@ -2,7 +2,7 @@
 
 export async function getlikesandsaves(id:string){
          
-  const res2=await fetch(`http://localhost:5000/users/setlikesandsaves?id=${id}`,{      
+  const res2=await fetch(`${process.env.BACKEND_URL}/users/setlikesandsaves?id=${id}`,{      
                     cache:'no-store',
                     headers:{'Content-Type': 'application/json'}        
                            })

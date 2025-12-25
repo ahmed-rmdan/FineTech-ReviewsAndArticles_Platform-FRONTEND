@@ -15,7 +15,7 @@ export default function Aboutuspg(){
 We carefully curate our collections to suit every mood and moment — from streetwear essentials to standout pieces that make a statement. Whether you are dressing for a casual day out or a night to remember. Modex is your go-to destination for quality. comfort. and style.
 
 Join our growing community of bold fashion-forward individuals. At Modex we dont just follow trends — we set them.</motion.p>
-npm run build
+
 
 
      </div>

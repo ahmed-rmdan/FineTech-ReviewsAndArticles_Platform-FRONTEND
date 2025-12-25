@@ -5,7 +5,7 @@ import type { review } from "@/types/types";
 export default  async function Postpg({params}:{params:{id:string}}) {
      const resolvedParams = await params;
      const id= resolvedParams.id
-      const res=await fetch(`http://localhost:5000/reviews/viewreview?id=${id}`,{
+      const res=await fetch(`${process.env.BACKEND_URL}/reviews/viewreview?id=${id}`,{
         cache:'no-store'
       }) 
       if(!res.ok){

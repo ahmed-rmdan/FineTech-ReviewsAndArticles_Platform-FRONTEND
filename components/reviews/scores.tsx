@@ -17,8 +17,8 @@ const router=useRouter()
      router.push('/login')
      return
   }
-  
-  const res=await  fetch(`http://localhost:5000/users/addscore`,{
+
+  const res=await  fetch(`${process.env.BACKEND_URL}/users/addscore`,{
                   method:'PUT'
                   ,
               headers:{'Content-Type': 'application/json'},

@@ -9,33 +9,37 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Spinner } from "@/components/ui/spinner"
 import type { post } from "@/types/types";
-
-export default function Blog({searchParams }:{searchParams:{sort:string}}) {
+import { useSearchParams } from "next/navigation";
+export default function Blog() {
 const[loading,setloading]=useState<boolean>(false)  
 const [page,setpage]=useState<number>(1)
 const [scroll,setscroll]=useState(0)
 const [posts,setposts]=useState<post[]>([])
- 
+ const searchParams=useSearchParams()
+ const sort=searchParams.get('sort')||''
+ const backendUrl = process.env.NODE_ENV === 'production' ? process.env.BACKEND_URL : 'http://localhost:5000'
+
 useEffect(()=>{
 
   async function getscrollpages(){
-       setloading(true)
-      const res=await fetch(`http://localhost:5000/posts/getposts?page=${page}&sort=${searchParams.sort}`,{
-        cache:'no-store'
+    try {
+      setloading(true)
+      const res=await fetch(`${backendUrl}/posts/getposts?page=${page}&sort=${sort}`,{
+        cache:'no-store',
+        headers:{'Content-Type': 'application/json'}
       })
       if(!res.ok){
-        throw new Error('somthing is wrong')
+        console.error('Failed to fetch posts:', res.status, res.statusText)
+        setloading(false)
+        return
       }
-      const newposts=posts
-       const data:{posts:post[],noposts:number}=await res.json()
-     
-          data.posts.map(elm=>{
-            newposts.push(elm)
-          })      
-         console.log(newposts)
-          setposts(newposts)
-
-          setloading(false)
+      const data:{posts:post[],noposts:number}=await res.json()
+      setposts(prevPosts => [...prevPosts, ...data.posts])
+      setloading(false)
+    } catch (error) {
+      console.error('Error fetching posts:', error)
+      setloading(false)
+    }
   }
 
 getscrollpages()
@@ -43,30 +47,22 @@ getscrollpages()
 },[page])
 
 useEffect(()=>{
+  const handleScroll = () => {
+    const scrolly = window.scrollY
+    setscroll(scrolly)
+    
+    let scrollpage
+    if(window.innerWidth > 425){
+      scrollpage = Math.ceil(scrolly / 770)
+    } else {
+      scrollpage = Math.ceil(scrolly / 600)
+    }
+    setpage(prev => prev < scrollpage ? prev + 1 : prev)
+  }
 
- window.addEventListener('scroll',()=>{
-           const scrolly=window.scrollY
-           setscroll(scrolly)
-          
-    }  
- )
- let scrollpage
-
- if(window.innerWidth>425){
-  scrollpage=Math.ceil(scroll/770)
- }else{
- scrollpage=Math.ceil(scroll/600)
- }
-
-
-setpage(prev=>prev<scrollpage?prev+1:prev)
-
-
-
- return ()=>{}
-
-
-},[scroll])
+  window.addEventListener('scroll', handleScroll)
+  return () => window.removeEventListener('scroll', handleScroll)
+}, [])
 
 console.log(posts)
 

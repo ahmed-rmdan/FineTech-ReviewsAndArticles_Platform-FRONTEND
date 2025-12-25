@@ -2,8 +2,7 @@
 
 
 
-import React from "react";
-import { ItemSlider } from "./item";
+
 import { Taps } from "./taps";
 import type { post } from "@/types/types";
 import { Itemgroup } from "./itemgroup";
@@ -11,7 +10,7 @@ import { Itemgroup } from "./itemgroup";
 export async function Slider(){
 
 
-      const res=await fetch(`http://localhost:5000/posts/getsliderposts`,{      
+      const res=await fetch(`${process.env.BACKEND_URL}/posts/getsliderposts`,{      
               cache:'no-store',
               headers:{'Content-Type': 'application/json'}        
                      })
