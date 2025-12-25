@@ -1,43 +1,36 @@
 'use client'
 
-import React from "react";
+
 import { motion } from "framer-motion";
 
 
 
 export default function Terms(){
     return(
+      
      <div className="container flex flex-col w-full mx-auto  gap-[10px] text-[5.5px] md:text-[8px] xl:text-[10px] md:gap-[25px] p-6">
       <motion.h1 initial={{x:-250,opacity:0}} transition={{duration:1}} animate={{x:0,opacity:100}} className="w-full font-bold text-main underline text-[5em] text-center   "> 
         Term&Conditions</motion.h1>
       <motion.p initial={{x:-500,opacity:0}} transition={{duration:1.2}} animate={{x:0,opacity:100}} className=" mx-auto w-[97%] sm:w-[90%] text-[2.2em] text-center 
-      text leading-loose">Welcome to Modex!
+      text leading-loose">By accessing or using the Finetech application you agree to comply with and be bound by these Terms and Conditions. If you do not agree with any part of these terms you must not use the application.
 
-By accessing and using our website, you agree to be bound by the following terms and conditions. Please read them carefully.
+Finetech is a fintech content platform that provides articles reviews and user generated content for informational purposes only. The content published on Finetech does not constitute financial legal or investment advice and should not be relied upon as such.
 
-1. General
-These Terms & Conditions apply to all visitors, users, and customers of our website. Modex reserves the right to update or change these terms at any time without prior notice.
+Users are responsible for the accuracy legality and appropriateness of the content they publish including reviews comments ratings and replies. You agree not to post any content that is misleading offensive harmful illegal or violates the rights of others.
 
-2. Products & Pricing
-We strive to provide accurate descriptions and images of all our products. However, colors and styles may slightly vary depending on screen settings. All prices are listed in Egypt and are subject to change without notice.
+Finetech reserves the right to review moderate edit or remove any content that violates these terms or is deemed inappropriate without prior notice.
 
-3. Orders & Payments
-Once an order is placed, you will receive an email confirmation. We reserve the right to cancel or refuse any order for any reason, including suspected fraud or inventory issues. Payments are processed securely via trusted third-party providers.
+Users may interact with content by liking commenting replying and saving articles or reviews. Any misuse of these features including spam manipulation or abusive behavior may result in account suspension or termination.
 
-4. Shipping & Delivery
-We aim to process and ship all orders promptly. Delivery times may vary depending on location and external factors. Modex is not responsible for delays caused by courier services.
+All intellectual property rights related to the Finetech platform including design logos text and software are owned by Finetech or its licensors. You may not copy reproduce or distribute any part of the platform without prior permission.
 
-5. Returns & Exchanges
-Customers have the right to request a return or exchange within e.g., 14 days of receiving the product, provided that the item is unused, unworn, and in its original packaging. For more details, please refer to our Return Policy.
+Finetech does not guarantee the accuracy completeness or reliability of any user generated content. You acknowledge that interactions and decisions based on content found on the platform are made at your own risk.
 
-6. Intellectual Property
-All content on this website — including text, images, logos, and designs — is the property of Modex and may not be copied or used without written permission.
+Finetech may update or modify these Terms and Conditions at any time. Continued use of the application after changes are made constitutes acceptance of the updated terms.
 
-7. Privacy
-We value your privacy. Please refer to our Privacy Policy to understand how we collect, use, and protect your personal information.
+Finetech shall not be held liable for any direct indirect or consequential damages arising from the use or inability to use the platform.
 
-8. Contact Us
-If you have any questions about these Terms & Conditions, feel free to contact us at modex@gmail.com.
+If you have any questions regarding these Terms and Conditions you should stop using the application until the issue is resolved.
 
 </motion.p>
 

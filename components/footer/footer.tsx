@@ -40,7 +40,7 @@ export function Footer(){
 
 
      <section className="flex flex-col sm:flex-row items-center  justify-around font-semibold bg-black h-[80px] sm:h-[50px] text-[11px] sm:text-[16px] text-white">
-                  <p> modexstore.netlify.app@2025</p>
+                  <p> https://finetech-platform.vercel.app@2025</p>
                   <p>ahmedrmadan251998@gmail.com</p>
                   
          </section>

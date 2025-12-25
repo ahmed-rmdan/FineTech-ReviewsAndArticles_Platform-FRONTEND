@@ -1,9 +1,9 @@
 'use client'
 
-import React from "react";
+
 import Link from "next/link";
 
-import { DarkLight } from "./darklight";
+
 import { ReviewsDrop } from "./reviewsdrop";
 
 import { AlignJustify } from 'lucide-react';
@@ -20,7 +20,7 @@ import { LogOut } from 'lucide-react';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CardLogin } from "../user/login";
-
+import { signOut } from "next-auth/react";
 import { House } from 'lucide-react';
 import { Search } from 'lucide-react';
 import { Newspaper } from 'lucide-react';
@@ -38,6 +38,7 @@ import { useSession } from "next-auth/react";
 import { getlikesandsaves } from "../global/getlikesandsaves";
 import { useAppDispatch } from "@/state/hook";
 import { useractions } from "@/state/state";
+import { toast } from "sonner";
 
 export function Header(){
     const router=useRouter()
@@ -81,9 +82,15 @@ function handlesearch(){
 
 
 }
-if(data){
 
-  
+async function handlelogout(){
+  const confirm=window.confirm('you are logging out are you sure ?')
+  if(!confirm){
+   return;
+  }
+  await signOut({redirect:false})
+  router.push('/')
+  toast.warning('you have been logged out')
 }
 
 
@@ -136,7 +143,7 @@ return(
                               w-full top-0 h-full rounded-[180%] "></Image>
                    </Link>
                {  profile&&  <div  onMouseLeave={()=>{setprofile(prev=>false)}}  onMouseEnter={()=>{setsign(prev=>true)}} className=" absolute w-[300px] xl:w-[370px] 
-                     right-[70px]  xl:right-[130px]  2xl:right-[220px] top-[45px] rounded-2xl bg-[#e5e7eb]">
+                     right-[50px]  xl:right-[110px]  2xl:right-[170px] top-[45px] rounded-2xl bg-[#e5e7eb]">
                           <Profile></Profile>
                    </div>}                                       
                </>}                    
@@ -167,14 +174,7 @@ else {
                                 <Search className=" hover:cursor-pointer" size={'9em'} onClick={handlesearch}></Search>
                  
                               </div>
-                                  {     search &&  <div className=" absolute flex flex-row top-[50px]  items-center justify-center right-[17px] 
-                                                gap-[5px] bg-[#e5e7eb] z-100  w-[200px] h-[50px]">
-                         <Input type="text" className=" border-[#cb1b16] text-[4em] w-[67%] border-2 text-[#cb1b16] bg-white "  />
-                          <Button type="submit" variant="outline" className=" bg-[#cb1b16] hover:bg-[#cb1b16] text-[4em]  font-bold w-[25%]
-                           hover:cursor-pointer hover:text-white " >
-                             Search
-                            </Button>
-                </div>}                
+                                  {     search &&  <SearchHeader type='mobile'></SearchHeader>}                
                     </div>
         
              </div>
@@ -225,17 +225,17 @@ else {
                          </div>
                          <div className="flex flex-row gap-[7px] items-center">
                                 <Bookmark ></Bookmark>
-                               <Link href={'/user/saved'} className="  font-bold hover:underline"> Saved</Link>
+                               <Link href={`/user/saved?id=${data?.user.id}`} className="  font-bold hover:underline"> Saved</Link>
             
                         </div>
                         <div className="flex flex-row text-center gap-[7px]">
                                <ThumbsUp ></ThumbsUp>
-                             <Link href={'/user/liked'} className="  font-bold hover:underline"> Liked</Link>
+                             <Link href={`/user/liked?id=${data?.user.id}`} className="  font-bold hover:underline"> Liked</Link>
               
                        </div>       
                        <div className="flex flex-row items-center gap-[7px]">
-                            <LogOut ></LogOut>
-                           <p   className=" font-bold hover:underline hover:cursor-pointer "> LogOut</p>
+                            <LogOut  onClick={handlelogout}></LogOut>
+                           <p  onClick={handlelogout} className=" font-bold hover:underline hover:cursor-pointer "> LogOut</p>
             
                       </div>            
                 

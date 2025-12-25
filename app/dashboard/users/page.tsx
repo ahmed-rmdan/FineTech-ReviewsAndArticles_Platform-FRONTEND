@@ -1,5 +1,5 @@
 
-'use server'
+
 
 import { Pages } from "@/components/global/pages"
 import type { user} from "@/types/types"
@@ -9,10 +9,12 @@ import { UserAdmin } from "@/components/admin/users/adminuser"
 export default  async function  UsersControl({searchParams }:{searchParams:{activepage:string}}){
    
   const params=await searchParams
-     
-  const res=await fetch(`http://localhost:5000/users/getadminusers?page=${params.activepage}`,{      
+     const activepage=params.activepage||'1'
+  const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/getadminusers?page=${activepage}`,{      
             cache:'no-store',
-            next:{tags:['adminusers']}        
+
+            next:{tags:['adminusers']} ,
+            headers:{'Content-Type': 'application/json'}       
                      })
                      if(!res.ok){
                         throw new Error('somthing is wrong')
@@ -31,7 +33,7 @@ export default  async function  UsersControl({searchParams }:{searchParams:{acti
                            return  <UserAdmin  banned={elm.banned} id={elm._id} key={i} username={elm.name} mainimage={elm.image} date={new Date(elm.createdAt)  } ></UserAdmin>
                          }) }
                         </div>         
-              <Pages activepage={Number(params.activepage)} noposts={data.nousers} types="usersadmin"  sort={'Newest'}></Pages>
+              <Pages activepage={Number(activepage)} noposts={data.nousers} types="usersadmin"  sort={'Newest'}></Pages>
         
     </div>
   )

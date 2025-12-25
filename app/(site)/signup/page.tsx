@@ -74,9 +74,9 @@ const onsubmit:SubmitHandler<formfield>=async(form)=>{
   return(
     <div className=" flex items-center justify-center   w-full bg-sec text-[3px] sm:text-[4px]   lg:text-[4px]  xl:text-[4px] 2xl:text-[4.5px] " >
          
-         <div className="flex flex-col items-center justify-start bg-white p-4 sm:p-6 m-10 w-full sm:w-[85%] xl:w-[55%] 2xl:w-[50%] rounded-2xl gap-[25px] ">
+         <div className="flex flex-col items-center justify-start bg-white  p-4 sm:p-6 m-10 w-full sm:w-[85%] xl:w-[55%] 2xl:w-[50%] rounded-2xl gap-[25px] ">
             <h1 className="w-full underline font-extrabold text-main text-[8em] text-center"> SignUP</h1>
-             <form className="flex flex-col items-center w-[98%] sm:w-[70%] lg:w-[60%] gap-[15px] text-[3em]" onSubmit={handleSubmit(onsubmit)}>
+             <form className="flex flex-col items-center w-[100%] sm:w-[70%] lg:w-[60%] gap-[15px] text-[3em]" onSubmit={handleSubmit(onsubmit)}>
                     <Label className="self-start">Name</Label>
                      <Input {...register('name')} type="text" placeholder="your Name" required />
                   { errors.name&&<p className="text-main font-semibold self-start "> *{errors.name?.message}</p>}
