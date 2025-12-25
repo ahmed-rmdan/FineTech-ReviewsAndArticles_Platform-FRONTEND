@@ -19,7 +19,7 @@ export const Pages:FC<{activepage:number,noposts:number,types:string,sort:string
   const curgrouppages=(Math.ceil(props.activepage/6))
  
   const end=(curgrouppages<nogrouppages)?6:nopages%6
-  let arr:number[]=[]
+  const arr:number[]=[]
   
     for(let i=(curgrouppages-1)*6+1;i<=end;i++){
       arr.push(i)

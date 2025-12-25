@@ -32,7 +32,7 @@ export default async function ReviewsControl({searchParams }:{searchParams:{acti
        </div>         
         <div className="flex flex-col w-[99%] sm:w-[90%] xl:w-[75%] gap-[20px] items-center justify-around   ">
           {data.reviews.map(elm=>{
-           return <ReviewItemAdmin title={elm.title} score={Number(elm.score)} date={new Date(elm.createdAt)} mainimage={elm.mainimage}  id={elm._id}></ReviewItemAdmin>
+           return <ReviewItemAdmin key={elm._id} title={elm.title} score={Number(elm.score)} date={new Date(elm.createdAt)} mainimage={elm.mainimage}  id={elm._id}></ReviewItemAdmin>
           })}
 
        </div>         

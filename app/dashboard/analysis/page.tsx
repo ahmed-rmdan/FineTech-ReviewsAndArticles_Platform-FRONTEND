@@ -2,7 +2,7 @@ import { Compare } from "@/components/admin/analysis/compare"
 import { Views } from "@/components/admin/analysis/views"
 import { Likes } from "@/components/admin/analysis/likes"
 
-
+export const dynamic = 'force-dynamic';
 export default  async function  Analysis(){
    
             const res=await fetch(`http://localhost:5000/getreport`,{                          

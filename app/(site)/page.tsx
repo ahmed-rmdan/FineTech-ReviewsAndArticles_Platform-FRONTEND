@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "FineTech-Home",
   description: " NEWS & Review for Technologies",
 };
-
+export const dynamic = 'force-dynamic';
 export default function Home() {
   return (
     <div >

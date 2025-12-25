@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
-let arr=[1,2,3,4,5,6,7,8,9,10]
+const arr=[1,2,3,4,5,6,7,8,9,10]
 
 
 export function Scores({id}:{id:string}){

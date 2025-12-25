@@ -102,7 +102,7 @@ return(
                     </div>
                      <div className="flex flex-row gap-[5px] items-center">
                       <Newspaper size={'1.4em'}></Newspaper>
-                      <Link  href={'/blog?sort=Newest'} className="hover:underline hover:cursor-pointer text-[1.1em]" > Blog</Link>
+                      <a  href={'/blog?sort=Newest'} className="hover:underline hover:cursor-pointer text-[1.1em]" > Blog</a>
                     </div>
                   <ReviewsDrop></ReviewsDrop>
           

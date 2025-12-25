@@ -53,7 +53,7 @@ useEffect(()=>{
  let scrollpage
 
  if(window.innerWidth>425){
-  scrollpage=Math.ceil(scroll/750)
+  scrollpage=Math.ceil(scroll/770)
  }else{
  scrollpage=Math.ceil(scroll/600)
  }
@@ -85,7 +85,7 @@ console.log(posts)
             items-center text-white bg-[#e5e7eb] text-[2.5px] sm:text-[3px] p-4  lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]    ">
                       <div className="flex flex-col justify-between gap-[20px]  w-full  items-center ">
                          {posts.map(elm=>{
-                          return       <ItemPost watches={elm.views} date={new Date(elm.createdAt)} likes={elm.likes.length} comments={elm.comments.length}
+                          return       <ItemPost key={elm._id} watches={elm.views} date={new Date(elm.createdAt)} likes={elm.likes.length} comments={elm.comments.length}
                            id={elm._id} title={elm.title} description={elm.description}
                                 image={elm.mainimage}></ItemPost>
                          })}                     

@@ -1,9 +1,7 @@
 
-import { Button } from "@/components/ui/button"
-import { Option, SlidersHorizontal } from 'lucide-react';
 
 
-export const Categories:React.FC<{}>=(props)=>{
+export function Categories(){
 
 return(
  

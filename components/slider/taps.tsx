@@ -5,9 +5,9 @@
 import React from "react";
 
 import type { post } from "@/types/types";
-import { ItemSlider } from "./item"
+
 import { useState,useEffect } from "react"
-import {motion} from 'framer-motion'
+
 export function Taps({posts}:{posts:post[]}){
     
 const [number,setnumber]=useState<number>(0)
@@ -37,7 +37,7 @@ return(
 {                    posts.map((elm,i)=>{
                              
                      return(
-                          <button className={` h-[15px] w-[15px] sm:h-[20px] sm:w-[20px] rounded-[180%] ${ (number===i)?'bg-[#cb1b16]':'bg-white' } `}></button>
+                          <button key={elm._id} className={` h-[15px] w-[15px] sm:h-[20px] sm:w-[20px] rounded-[180%] ${ (number===i)?'bg-[#cb1b16]':'bg-white' } `}></button>
                      )
                      
                                        })

@@ -8,7 +8,7 @@ const category=['Software','Hardware','Electronics','Other']
 
 
 export function ReviewsDrop(){
-    const [onhover,setonhover]=useState<Boolean>(false)
+    const [onhover,setonhover]=useState<boolean>(false)
     function handleclick(elm:string){
         location.href=`/reviews?sort=Newest&category=${elm}`
     }

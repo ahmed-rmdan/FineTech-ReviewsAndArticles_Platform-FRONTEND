@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import { Searchinput } from "@/components/global/search";
-import { Filter } from "@/components/global/filter";
+
 import { ItemPost } from "@/components/posts/itempost";
 import type { post,review } from "@/types/types";
 import { ReviewItem } from "@/components/reviews/itemreview";
@@ -30,7 +29,7 @@ export default async function Liked({searchParams}:{searchParams:{id:string}}) {
         })
  
      
-      const data:{likes:{kind:'post'|'review',item:any}[]}= await res.json()
+      const data:{likes:{kind:'post'|'review',item:review|post}[]}= await res.json()
       
     
 
@@ -40,7 +39,7 @@ const empty=<div className="flex flex-col items-center py-20 text-center text-gr
     No Likes Yet
   </h2>
   <p className="text-sm text-main">
-    You haven’t liked any posts or reviews yet. Start exploring and tap ❤️ on posts or review you enjoy.
+    You havent liked any posts or reviews yet. Start exploring and tap ❤️ on posts or review you enjoy.
   </p>
 </div>
 
@@ -54,7 +53,7 @@ const empty=<div className="flex flex-col items-center py-20 text-center text-gr
                   {  data.likes.length===0? empty :  data.likes.map(elm=>{
                                if(elm.kind==='post'){
                                  const post= elm.item as post
-                          return  <ItemPost watches={post.views} date={new Date(post.createdAt)} likes={post.likes.length} comments={post.comments.length}
+                          return  <ItemPost key={post._id} watches={post.views} date={new Date(post.createdAt)} likes={post.likes.length} comments={post.comments.length}
                            id={post._id} title={post.title} description={post.description}
                                 image={post.mainimage}></ItemPost>
                                }

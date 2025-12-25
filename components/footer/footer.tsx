@@ -5,7 +5,7 @@ import githublogo from '@/public/SOCIAL MEDIA/github-6980894_1280.png'
 import linkedlogo from '@/public/SOCIAL MEDIA/linkdin.png'
 import youtubelogo from '@/public/SOCIAL MEDIA/YouTube_full-color_icon_(2024).svg.png'
 
-export const Footer:React.FC<{}>=()=>{
+export function Footer(){
     return(<>
     <section className="flex flex-col items-center justify-center gap-[2%] w-full h-[550px] sm:h-[190px] bg-[#cb1b16]
      text-white text-[0.9em] sm:text-[0.65em] md:text-[1em] xl:text-[1.2em]  ">

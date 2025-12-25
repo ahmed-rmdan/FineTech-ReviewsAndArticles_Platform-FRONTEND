@@ -74,7 +74,7 @@ setpage(prev=>prev<scrollpage?prev+1:prev)
 
 
 const result=(!empty)?posts.map(elm=>{
-                          return       <ItemPost watches={elm.views} date={new Date(elm.createdAt)} likes={elm.likes.length} comments={elm.comments.length}
+                          return       <ItemPost key={elm._id} watches={elm.views} date={new Date(elm.createdAt)} likes={elm.likes.length} comments={elm.comments.length}
                            id={elm._id} title={elm.title} description={elm.description}
                                 image={elm.mainimage}></ItemPost>
                          }):<div className="flex flex-col items-center py-20 text-center text-gray-500">
