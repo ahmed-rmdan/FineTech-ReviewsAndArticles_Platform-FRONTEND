@@ -7,7 +7,7 @@ import type { post } from "@/types/types";
 import { TrendsRender } from "./trendsrender";
 export async function Trends(){
     
-      const res=await fetch(`${process.env.BACKEND_URL}/posts/gettopreadingposts`,{      
+      const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/posts/gettopreadingposts`,{      
               cache:'no-store',
               headers:{'Content-Type': 'application/json'}        
                      })

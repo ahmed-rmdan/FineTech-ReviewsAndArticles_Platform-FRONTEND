@@ -15,7 +15,7 @@ export default async function ReviewsControl({searchParams }:{searchParams:{acti
   const sort=params.sort
   const category=params.category
   console.log(params.category)
-  const res=await fetch(`${process.env.BACKEND_URL}/reviews/getreviews?page=${activepage}&sort=${sort}&category=${category}`,{      
+  const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/getreviews?page=${activepage}&sort=${sort}&category=${category}`,{      
       cache:'no-store'        
                      })
                      if(!res.ok){

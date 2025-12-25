@@ -43,7 +43,7 @@ console.log(data?.user.id)
  setloading(true)
   try{
      
-const res= await fetch(`${process.env.BACKEND_URL}/users/updatepass`,{
+const res= await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/updatepass`,{
                      method:'PUT',
                     body:JSON.stringify({newpass,pass:formdata.get('password'),id:data?.user.id})
                     ,

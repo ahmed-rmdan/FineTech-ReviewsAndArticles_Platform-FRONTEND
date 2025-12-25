@@ -66,7 +66,7 @@ const onsubmit:SubmitHandler<formfield>=async(data)=>{
 
 
  try{
-      const res1= await fetch(`${process.env.BACKEND_URL}/reviews/editreview`,{
+      const res1= await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/editreview`,{
          method:'PUT',
        headers:{    'Content-Type': 'application/json'},
                     body:JSON.stringify(
@@ -88,7 +88,7 @@ throw new Error(postdata.message as string)
 
   console.log(formdata.get('file'))
 
-      const res2= await fetch(`${process.env.BACKEND_URL}/reviews/editreviewimage?id=${review._id}`,{
+      const res2= await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/editreviewimage?id=${review._id}`,{
          method:'PUT',
                     body:formdata
  })

@@ -41,7 +41,7 @@ const onsubmit:SubmitHandler<formfield>=async(form)=>{
   try{
 
 
-               const res= await fetch(`${process.env.BACKEND_URL}/users/createuser`,{
+               const res= await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/createuser`,{
          method:'POST',
        headers:{    'Content-Type': 'application/json'},
                     body:JSON.stringify(

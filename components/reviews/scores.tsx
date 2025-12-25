@@ -17,10 +17,12 @@ const router=useRouter()
      router.push('/login')
      return
   }
-
-  const res=await  fetch(`${process.env.BACKEND_URL}/users/addscore`,{
+console.log(session.user.id)
+  const res=await  fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/addscore`,{
                   method:'PUT'
                   ,
+                       
+                   
               headers:{'Content-Type': 'application/json'},
              body:JSON.stringify({id:session.user.id,
                 reviewid:id,

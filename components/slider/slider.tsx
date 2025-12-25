@@ -10,7 +10,7 @@ import { Itemgroup } from "./itemgroup";
 export async function Slider(){
 
 
-      const res=await fetch(`${process.env.BACKEND_URL}/posts/getsliderposts`,{      
+      const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/posts/getsliderposts`,{      
               cache:'no-store',
               headers:{'Content-Type': 'application/json'}        
                      })

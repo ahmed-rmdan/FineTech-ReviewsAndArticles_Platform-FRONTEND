@@ -52,7 +52,7 @@ const router=useRouter()
  }
 
  try{
-      const res1= await fetch(`${process.env.BACKEND_URL}/posts/createpost`,{
+      const res1= await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/posts/createpost`,{
          method:'POST',
         
        headers:{    'Content-Type': 'application/json',

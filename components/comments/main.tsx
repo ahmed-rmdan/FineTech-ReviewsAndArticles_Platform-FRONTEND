@@ -6,7 +6,7 @@ import { AddComment } from "./addcomment";
 import type { comment } from "@/types/types";
 export async function Maincomment({id}:{id:string}){
     
-      const res=await fetch(`${process.env.BACKEND_URL}/comments/getcomments?id=${id}`,{
+      const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/comments/getcomments?id=${id}`,{
         headers:{'Content-Type': 'application/json'} ,
         next:{tags:['comments']}
       }) 

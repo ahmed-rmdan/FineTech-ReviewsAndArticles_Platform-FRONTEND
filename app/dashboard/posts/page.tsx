@@ -16,7 +16,7 @@ export default  async function  PostControl({searchParams }:{searchParams:{activ
   const sort=params.sort
   const activepage=params.activepage
 
-  const res=await fetch(`${process.env.BACKEND_URL}/posts/getposts?page=${activepage}&sort=${sort}`,{      
+  const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/posts/getposts?page=${activepage}&sort=${sort}`,{      
       cache:'no-store'        
                      })
                      if(!res.ok){

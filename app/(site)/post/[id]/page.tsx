@@ -8,7 +8,7 @@ export default async function Postpg({params}:{params:{id:string}}) {
   const resolvedParams = await params;
   console.log(resolvedParams)
     const id= resolvedParams.id
-            const res=await fetch(`${process.env.BACKEND_URL}/posts/viewpost?id=${id}`,{      
+            const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/posts/viewpost?id=${id}`,{      
                     cache:'no-store',
                     headers:{'Content-Type': 'application/json'}        
                            })

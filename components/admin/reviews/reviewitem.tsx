@@ -18,7 +18,7 @@ const router= useRouter()
     if(!confirm){
          return
     }
-       const res=await fetch(`${process.env.BACKEND_URL}/reviews/deletereview`,{
+       const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/deletereview`,{
         method:'DELETE',
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify({id})

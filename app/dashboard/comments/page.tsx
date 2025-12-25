@@ -9,8 +9,9 @@ import { CommentAdmin } from "@/components/admin/comments/admincomment"
 export default  async function  CommentControl({searchParams }:{searchParams:{activepage:string}}){
    
   const params=await searchParams
+  const activepage= params.activepage
      
-  const res=await fetch(`${process.env.BACKEND_URL}/comments/getadmincomments?page=${params.activepage}`,{      
+  const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/comments/getadmincomments?page=${activepage}`,{      
             cache:'no-store',
             next:{tags:['admincomments']}        
                      })
@@ -31,7 +32,7 @@ export default  async function  CommentControl({searchParams }:{searchParams:{ac
                            return  <CommentAdmin content={elm.content} id={elm._id} key={i} username={elm.name} mainimage={elm.image} date={new Date(elm.createdAt) } ></CommentAdmin>
                          }) }
                         </div>         
-              <Pages activepage={Number(params.activepage)} noposts={data.nocomments} types="commentsadmin"  sort={'Newest'}></Pages>
+              <Pages activepage={Number(activepage)} noposts={data.nocomments} types="commentsadmin"  sort={'Newest'}></Pages>
         
     </div>
   )

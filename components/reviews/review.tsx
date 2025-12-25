@@ -20,7 +20,7 @@ export async function Review({title,image,date, content,summary,
    score:number,likes:string[],comments:number,id:string
   }){
 
-         const res=await fetch(`${process.env.BACKEND_URL}/users/getscores?id=${id}`,{             
+         const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/getscores?id=${id}`,{             
                     cache:'default',
                     headers:{'Content-Type': 'application/json'} ,
                     next:{tags:['userscore']}

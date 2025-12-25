@@ -13,7 +13,7 @@ export default async function Editreview({searchParams}:{searchParams:{id:string
    const params=await searchParams
    const id=params.id
 
-   const res=await fetch(`${process.env.BACKEND_URL}/reviews/getreview?id=${id}`,{      
+   const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/getreview?id=${id}`,{      
        cache:'no-store',
        headers:{'Content-Type': 'application/json'}        
                       },)

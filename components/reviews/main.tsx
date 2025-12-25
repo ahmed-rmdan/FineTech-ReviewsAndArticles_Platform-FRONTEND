@@ -8,7 +8,7 @@ import type { review } from "@/types/types";
 
 export async function MainReviews(){
  
-     const res=await fetch(`${process.env.BACKEND_URL}/reviews/gethomereviews`,{
+     const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/gethomereviews`,{
         headers:{    'Content-Type': 'application/json'},
 
        })  

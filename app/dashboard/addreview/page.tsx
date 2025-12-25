@@ -62,7 +62,7 @@ console.log('vreating')
 console.log(data.category)
 
  try{
-      const res1= await fetch(`${process.env.BACKEND_URL}/reviews/createreview`,{
+      const res1= await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/createreview`,{
          method:'POST',
        headers:{    'Content-Type': 'application/json'},
                     body:JSON.stringify(

@@ -62,7 +62,7 @@ const selectedfile=ev.target.files[0]
     console.log(formdata.get('file'))
 
      try{
-    const res= await fetch(`${process.env.BACKEND_URL}/users/putuserimage?id=${userid}`,{
+    const res= await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/putuserimage?id=${userid}`,{
          method:'PUT',
                     body:formdata
                 })

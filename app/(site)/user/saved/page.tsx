@@ -14,7 +14,7 @@ export default async function Saved({searchParams}:{searchParams:{id:string}}) {
 const id= params.id
  
 
-        const res=await fetch(`${process.env.BACKEND_URL}/users/getsaves?id=${id}`,{
+        const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/getsaves?id=${id}`,{
               headers:{'Content-Type': 'application/json'},
               next:{tags:['saved']},
               cache:'no-store'
