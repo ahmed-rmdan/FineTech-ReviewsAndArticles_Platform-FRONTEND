@@ -17,14 +17,14 @@ const [scroll,setscroll]=useState(0)
 const [posts,setposts]=useState<post[]>([])
  const searchParams=useSearchParams()
  const sort=searchParams.get('sort')||''
- const backendUrl = process.env.NODE_ENV === 'production' ? process.env.BACKEND_URL : 'http://localhost:5000'
+
 
 useEffect(()=>{
 
   async function getscrollpages(){
     try {
       setloading(true)
-      const res=await fetch(`${backendUrl}/posts/getposts?page=${page}&sort=${sort}`,{
+      const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/posts/getposts?page=${page}&sort=${sort}`,{
         cache:'no-store',
         headers:{'Content-Type': 'application/json'}
       })
@@ -62,7 +62,7 @@ useEffect(()=>{
 
   window.addEventListener('scroll', handleScroll)
   return () => window.removeEventListener('scroll', handleScroll)
-}, [])
+}, [scroll])
 
 console.log(posts)
 

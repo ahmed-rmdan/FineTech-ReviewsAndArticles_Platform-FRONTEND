@@ -27,7 +27,7 @@ useEffect(()=>{
 
   async function getscrollpages(){
        setloading(true)
-      const res=await fetch(`${process.env.BACKEND_URL}/posts/searchadminposts?search=${search}&page=${page}&sort=${sort}`,{
+      const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/posts/searchadminposts?search=${search}&page=${page}&sort=${sort}`,{
         cache:'no-store'
       })
       if(!res.ok){

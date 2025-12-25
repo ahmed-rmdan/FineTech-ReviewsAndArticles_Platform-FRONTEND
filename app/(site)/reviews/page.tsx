@@ -23,7 +23,7 @@ const[loading,setloading]=useState<boolean>(false)
 const [page,setpage]=useState<number>(1)
 const [scroll,setscroll]=useState(0)
 const [reviews,setreviews]=useState<review[]>([])
- const backendUrl = process.env.NODE_ENV === 'production' ? process.env.BACKEND_URL : 'http://localhost:5000'
+
 useEffect(()=>{
   setpage(1);
   setreviews([]);
@@ -32,7 +32,7 @@ useEffect(()=>{
 useEffect(()=>{
   async function getscrollpages(){
        setloading(true)
-      const res=await fetch(`${backendUrl}/reviews/getreviews?page=${page}&sort=${sort}&category=${category}`,{
+      const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/getreviews?page=${page}&sort=${sort}&category=${category}`,{
         cache:'no-store'
       })
       if(!res.ok){

@@ -26,7 +26,7 @@ const sort=searchParamsHook.get('sort')||''
 useEffect(()=>{
   async function getscrollpages(){
        setloading(true)
-      const res=await fetch(`${process.env.BACKEND_URL}/reviews/getsearchreviews?page=${page}&sort=${sort}&category=${category}&search=${search}`,{
+      const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/getsearchreviews?page=${page}&sort=${sort}&category=${category}&search=${search}`,{
         cache:'no-store'
       })
       if(!res.ok){

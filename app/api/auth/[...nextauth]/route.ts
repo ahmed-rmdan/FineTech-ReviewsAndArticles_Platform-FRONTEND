@@ -16,7 +16,7 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         try{
-         const res=await fetch(`http://localhost:5000/users/signin`,{
+         const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/signin`,{
            method:'POST'
           ,
            headers:{'Content-Type': 'application/json'},
