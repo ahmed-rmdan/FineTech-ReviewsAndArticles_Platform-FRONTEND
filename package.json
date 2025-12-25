@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --host 0.0.0.0",
+    "dev": "next dev --turbopack ",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
@@ -38,6 +38,7 @@
     "redux": "^5.0.1",
     "remark-gfm": "^4.0.1",
     "sonner": "^2.0.7",
+    "start": "^5.1.0",
     "tailwind-merge": "^3.3.1",
     "zod": "^4.1.12"
   },

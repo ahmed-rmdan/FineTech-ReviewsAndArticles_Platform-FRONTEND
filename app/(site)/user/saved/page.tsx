@@ -44,6 +44,7 @@ const empty=<div className="flex flex-col items-center py-20 text-center text-gr
             items-center text-white bg-[#e5e7eb] text-[2.5px] sm:text-[3px] p-10  lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]    ">
                       <div className="flex flex-col justify-between gap-[20px]  w-full  items-center ">
                   {  data.saves.length===0?empty:  data.saves.map((elm)=>{
+                                if (elm.item==null) return ;
                                if(elm.kind==='post'){
                                  const post= elm.item as post
                           return  <ItemPost key={post._id} watches={post.views} date={new Date(post.createdAt)} likes={post.likes.length} comments={post.comments.length}

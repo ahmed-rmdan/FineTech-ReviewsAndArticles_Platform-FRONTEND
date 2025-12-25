@@ -13,7 +13,7 @@ export async function saveing(id:string,itemid:string,kind:string){
                     })       
                            }
                         )
-                      revalidateTag('saved') 
+                      revalidateTag('saved','saved') 
                       
                       return res
 
@@ -32,7 +32,7 @@ export async function liking(id:string,itemid:string,kind:string){
                     })       
                            }
                         )
-                      revalidateTag('liked') 
+                      revalidateTag('liked','liked') 
                       
                       return res
 
@@ -53,7 +53,7 @@ export async function addcomment(userid:string,itemid:string,content:string){
                           if (!res.ok) {
                    throw new Error('Failed to add comment')
                       }
-                      revalidateTag('comments') 
+                      revalidateTag('comments','comments') 
                       
                      
 
@@ -75,7 +75,7 @@ export async function addsubcomment(userid:string,itemid:string,content:string,c
                           if (!res.ok) {
                    throw new Error('Failed to add comment')
                       }
-                      revalidateTag('comments')                                            
+                      revalidateTag('comments','comments')                                            
 }
 
 
@@ -113,7 +113,7 @@ export async function DeleteComment(id:string){
                 throw new Error('failed to connect')
               }   
               
-              revalidateTag('admincomments')
+              revalidateTag('admincomments','admincomments')
                       
                      
 
@@ -134,7 +134,7 @@ export async function BanUser(id:string,token:string){
                 throw new Error('failed to connect')
               }   
               
-              revalidateTag('usersadmin')
+              revalidateTag('usersadmin','usersadmin')
                       
                      
 

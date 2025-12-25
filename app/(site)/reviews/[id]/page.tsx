@@ -3,7 +3,8 @@ import { Maincomment } from "@/components/comments/main";
 import { Review } from "@/components/reviews/review";
 import type { review } from "@/types/types";
 export default  async function Postpg({params}:{params:{id:string}}) {
-     const id=await params.id
+     const resolvedParams = await params;
+     const id= resolvedParams.id
       const res=await fetch(`http://localhost:5000/reviews/viewreview?id=${id}`,{
         cache:'no-store'
       }) 

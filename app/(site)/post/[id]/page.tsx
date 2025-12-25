@@ -5,13 +5,15 @@ import type { post } from "@/types/types";
 
 
 export default async function Postpg({params}:{params:{id:string}}) {
-    const id=await params.id
+  const resolvedParams = await params;
+  console.log(resolvedParams)
+    const id= resolvedParams.id
             const res=await fetch(`http://localhost:5000/posts/viewpost?id=${id}`,{      
                     cache:'no-store',
                     headers:{'Content-Type': 'application/json'}        
                            })
                              if(!res.ok){
-                              throw new Error('somthing went wrong')
+                              throw new Error('something went wrong')
                              }
                            const data:{post:post}=await res.json()
      console.log(data.post)
