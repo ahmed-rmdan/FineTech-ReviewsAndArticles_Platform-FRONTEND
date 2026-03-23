@@ -32,7 +32,7 @@ export function Footer(){
 
 
      <section className="flex flex-col sm:flex-row items-center justify-center gap-4 py-4 font-semibold bg-gradient-to-r from-gray-900 to-black text-white border-t border-gray-700">
-                  <p>&copy; 2025 FineTech Platform. All rights reserved.</p>
+                  <p className="text-[0.9em]">&copy; 2025 truetech-platform.vercel.app All rights reserved.</p>
                   <p>ahmedrmadan251998@gmail.com</p>
          </section>
     </>

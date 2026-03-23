@@ -4,15 +4,8 @@ import "./globals.css";
 import { ReduxProvider } from "@/state/reduxprovider";
 import { Toaster } from "sonner";
 import { SessionProvider } from "next-auth/react";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { ThemeProvider } from "@/components/global/themeprovider";
+import { geistSans, geistMono } from "@/lib/fonts";
 
 
 
@@ -29,9 +22,9 @@ export default function RootLayout({
              >
               <ReduxProvider>
               <SessionProvider>
-                     
+              <ThemeProvider>
                     {children}
-                
+              </ThemeProvider>
               </SessionProvider>
                
                </ReduxProvider>  

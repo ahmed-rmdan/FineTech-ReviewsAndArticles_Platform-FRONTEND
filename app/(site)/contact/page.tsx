@@ -17,7 +17,7 @@ export default function Contact(){
                
                <div className="flex flex-row items-center justify-center">
                        <Mail size={'1.2em'}></Mail>
-                       <p> E-MAIL : finetech@gmail.com</p>
+                       <p> E-MAIL : TrueTech@gmail.com</p>
                    </div>
 
                 <div className="flex flex-row items-center justify-center">

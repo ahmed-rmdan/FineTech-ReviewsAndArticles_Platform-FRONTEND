@@ -81,7 +81,7 @@ return(
                                <div className=" w-full flex flex-col items-center mt-[20px] gap-[20px] ">
                                        <h2 className="text-[5em] underline font-bold"> User Reviews</h2>
                                        <div className="flex flex-row items-center gap-[15px] ">
-                                             <button className="  w-[50px] h-[50px]  sm:h-[55px] sm:w-[55px]  xl:h-[70px] xl:w-[70px] rounded-[180%] 
+                                             <button className="  w-[55px] h-[55px]  sm:h-[65px] sm:w-[65px]  xl:h-[80px] xl:w-[80px] rounded-[180%] 
                                               border-4  text-[7em] 
                                            font-bold bg-white text-main border-[#cb1b16] ">
                                               {!data.avgscore?'0':data.avgscore.toFixed(1)}

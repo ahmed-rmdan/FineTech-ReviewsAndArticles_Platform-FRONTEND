@@ -67,7 +67,7 @@ return(
              <Link href={'/'} onClick={()=>{handlenavigate('1')}} className=" text-end  font-extrabold w-[55%] 
                                 sm:text-[6.5em]  lg:text-[10em] 
                                 hover:cursor-pointer   ">
-                       FineTech
+                       TrueTech
                 
               </Link>
               <button onClick={handlesignout} className="w-[40%] flex flex-row justify-center items-center gap-[7px] font-bold ml-[10%]
@@ -90,7 +90,7 @@ else {
                           <Link href={'/'}  className=" text-center  font-extrabold w-[60%] 
                                 text-[7em]  
                                 hover:cursor-pointer ">
-                                 FineTech
+                                 TrueTech
                 
                           </Link>
                           <button className="w-[40%] flex flex-row justify-center items-center gap-[5px] font-bold 

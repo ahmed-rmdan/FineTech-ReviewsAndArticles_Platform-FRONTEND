@@ -7,9 +7,11 @@ import { ItemPost } from "@/components/posts/itempost";
 import { useEffect } from "react";
 
 import { useState } from "react";
-import { Spinner } from "@/components/ui/spinner"
 import type { post } from "@/types/types";
 import { useSearchParams } from "next/navigation";
+
+import { LoadingSpinner } from "@/components/global/loadingspinner";
+
 export default function Blog() {
 const[loading,setloading]=useState<boolean>(false)  
 const [page,setpage]=useState<number>(1)
@@ -70,8 +72,9 @@ console.log(posts)
   return (
 
     <section className=" w-full  flex flex-col items-center bg-[#e5e7eb] text-[2.5px] sm:text-[3px]   lg:text-[3.5px]  xl:text-[4px] 2xl:text-[4.5px]   " >
-{           loading&&  <div className=" sticky  top-[45%] flex justify-center items-center w-[100px] h-[90px] sm:w-[150px] rounded-2xl sm:h-[120px] bg-white z-[20000]">
-                    <Spinner className="size-18 sticky " color={'red'} />                 
+{           loading&&  <div className=" sticky  top-[45%] flex flex-col gap-[10px] justify-center items-center
+                 w-[100px] h-[90px] sm:w-[150px] rounded-2xl sm:h-[120px] bg-white z-[20000]">
+                    <LoadingSpinner /> 
                     </div>   }
       <div className="flex flex-row w-full sm:w-[85%] lg:w-[70%] 2xl:w-[55%] justify-center items-center h-[55px] sm:h-[80px] gap-[11px] sm:gap-[20px]">
             <Searchinput type="searchposts"></Searchinput>

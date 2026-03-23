@@ -15,7 +15,7 @@ import { UserRoundPen } from 'lucide-react';
 import { Bookmark } from 'lucide-react';
 import { ThumbsUp } from 'lucide-react';
 import { LogOut } from 'lucide-react';
-
+import { X } from 'lucide-react';
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -26,6 +26,9 @@ import { Search } from 'lucide-react';
 import { Newspaper } from 'lucide-react';
 import { Star } from 'lucide-react';
 
+import { useAppDispatch } from "@/state/hook";
+
+import { toast } from "sonner";
 import Image from "next/image";
 import { Profile } from "../user/profile";
 
@@ -35,10 +38,10 @@ import { SearchHeader } from "./searchheader";
 
 import { useSession } from "next-auth/react";
 
+import { useTheme } from "@/components/global/themeprovider";
 import { getlikesandsaves } from "../global/getlikesandsaves";
-import { useAppDispatch } from "@/state/hook";
+
 import { useractions } from "@/state/state";
-import { toast } from "sonner";
 
 export function Header(){
     const router=useRouter()
@@ -49,6 +52,7 @@ const [sign,setsign]=useState<boolean>(false)
 const [profile,setprofile]=useState<boolean>(false)
 const dispatch=useAppDispatch()
 const {status,data}=useSession()
+const { toggleTheme } = useTheme()
 
 useEffect(()=>{
 setwidth(window.screen.width)
@@ -97,7 +101,7 @@ async function handlelogout(){
 if(width>=768){
 return(
            <nav className="flex flex-row xl:flex-row sticky  top-0  z-10000  min-w-full  p-2.5  
-            items-center bg-[#cb1b16] text-white text-[2.5px] sm:text-[4px]   lg:text-[4px]  xl:text-[4px] 2xl:text-[4.5px] min-h-[30px]   ">
+            items-center bg-[#cb1b16] dark:bg-gray-800 text-white dark:text-gray-100 text-[2.5px] sm:text-[4px]   lg:text-[4px]  xl:text-[4px] 2xl:text-[4.5px] min-h-[30px]   ">
               <div className="flex flex-row items-center justify-center    sm:min-w-[20%] 
               text-white font-semibold   w-[35%] text-[3em]   md:text-[5em] lg:text-[4em]   xl:text-[5em]  ">
                 <div className="flex w-full sm:text-[0.75em] lg:text-[1em]   h-full justify-center items-center gap-[12%]">
@@ -118,7 +122,7 @@ return(
               <Link href={'/'} onClick={()=>{handlenavigate('1')}} className=" text-center  font-extrabold w-[30%] 
                                 sm:text-[6em]  lg:text-[9em] 
                                 hover:cursor-pointer   ">
-                       TrueTech
+                      TrueTech
                 
               </Link>
               <div className="flex flex-row relative items-center justify-center rounded-2xl w-[30%] gap-[13%]">
@@ -143,7 +147,7 @@ return(
                               w-full top-0 h-full rounded-[180%] "></Image>
                    </Link>
                {  profile&&  <div  onMouseLeave={()=>{setprofile(prev=>false)}}  onMouseEnter={()=>{setsign(prev=>true)}} className=" absolute w-[300px] xl:w-[370px] 
-                     right-[50px]  xl:right-[110px]  2xl:right-[100px] top-[45px] rounded-2xl bg-[#e5e7eb]">
+                     right-[20px]   xl:right-[80px]  2xl:right-[150px] top-[45px] rounded-2xl bg-[#e5e7eb]">
                           <Profile></Profile>
                    </div>}                                       
                </>}                    
@@ -151,34 +155,37 @@ return(
 
               </div>
                { search && <SearchHeader></SearchHeader> }
-                         <div className="flex flex-row justify-start  w-[5%] items-center hover:cursor-pointer">
-                                <Moon size={'7.5em'}></Moon>
+                         {/* <div className="flex flex-row justify-start  w-[5%] items-center hover:cursor-pointer">
+                                <Moon size={'7.5em'} onClick={toggleTheme}></Moon>
                                
-                           </div>                                                    
+                           </div>                                                     */}
            </nav>
     )
 }
 else {
   return(
-   <nav className="flex flex-row sticky top-0 bg-[#cb1b16] text-white z-[10000]  min-w-full  p-3  justify-between 
+   <nav className="flex flex-row sticky top-0 bg-[#cb1b16] dark:bg-gray-800 text-white dark:text-gray-100 z-[10000]  min-w-full  p-3  justify-between 
   items-center  text-[2.5px]  min-h-[20px]   ">
-             <div className="flex flex-row w-[100%] text-[1em] justify-between items-center gap-[10%]">
-                  <AlignJustify color="white" className="min-w-[10%]" onClick={handleclick}></AlignJustify>
+             <div className="flex flex-row min-w-[100%] text-[1em] justify-between items-center gap-[10%]">
+                                     <div className="min-w-[15%]  flex flex-row items-center justify-center text-center  ">
+                                        { !menu ? <AlignJustify color="white" className="w-full"  onClick={handleclick}></AlignJustify> : <X color="white" size={'12em'}  onClick={handleclick}></X> }
+                                      </div>
+                  
              
-                      <div className="flex w-[75%] gap-[10%] flex-row items-center justify-center  ">
-                          <Link href={'/'}  className=" text-center  font-extrabold w-[50%] 
+                     
+                          <Link href={'/'}  className=" text-center  font-extrabold min-w-[50%] 
                                 text-[8em]  
                                 hover:cursor-pointer ">
-                                 FineTech
+                                 TrueTech
                 
                           </Link>
-                              <div className="flex flex-row w-[30%] justify-center gap-[13%] ">
+                              <div className="flex flex-row w-[15%] h-full justify-center item-center ">
 
-                                <Search className=" hover:cursor-pointer" size={'9em'} onClick={handlesearch}></Search>
+                                <Search className=" hover:cursor-pointer w-full"   onClick={handlesearch}></Search>
                  
                               </div>
                                   {     search &&  <SearchHeader type='mobile'></SearchHeader>}                
-                    </div>
+                 
         
              </div>
              <AnimatePresence>
@@ -190,7 +197,7 @@ else {
                  <div className="flex flex-col w-full mt-[30px] min-h-[100%] items-center justify-start gap-[5%] text-[13px] 
               text-white font-semibold  ">
                           {/* <div className="flex flex-row justify-start h-[5%] w-[70%] items-center">
-                                <Moon size={'2em'}></Moon>
+                                <Moon size={'2.5em'} onClick={toggleTheme}></Moon>
                                
                            </div> */}
                       <div className="flex flex-col w-full  mt-[20px]  text-[1.25em]   items-center gap-[55px]">

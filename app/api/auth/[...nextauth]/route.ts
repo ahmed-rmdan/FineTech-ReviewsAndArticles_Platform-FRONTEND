@@ -16,14 +16,18 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         try{
+          console.log('authorizing')
          const res=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/signin`,{
            method:'POST'
           ,
            headers:{'Content-Type': 'application/json'},
            body:JSON.stringify({username:credentials?.username,password:credentials?.password})     
          })
+
+
          const data:user&{token:string,role:string,message:string}=await res.json()
             if(!res.ok){
+              console.log(data.message)
               throw new Error(data.message as string)
             }
             console.log(data.token)

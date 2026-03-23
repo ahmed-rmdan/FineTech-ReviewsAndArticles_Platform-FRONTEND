@@ -2,6 +2,27 @@ import { Post } from "@/components/posts/post";
 import { Maincomment } from "@/components/comments/main";
 import { Review } from "@/components/reviews/review";
 import type { review } from "@/types/types";
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/reviews/viewreview?id=${resolvedParams.id}`, {
+    cache: 'no-store',  
+  });
+
+  if (!res.ok) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+
+  const data:{review:review} = await res.json();
+
+  return {
+    title: data.review.title,
+    description: data.review.description,
+  };
+}
+
 export default  async function Postpg({params}:{params:{id:string}}) {
      const resolvedParams = await params;
      const id= resolvedParams.id

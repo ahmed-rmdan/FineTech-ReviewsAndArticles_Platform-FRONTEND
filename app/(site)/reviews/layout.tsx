@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FineTech-Reviews",
+  title: "TrueTech-Reviews",
   description: "Reviews for most recent tech ",
 };
 

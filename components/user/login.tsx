@@ -1,4 +1,5 @@
 'use client'
+import React from "react"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -18,6 +19,7 @@ import { useState } from "react"
 import Image from "next/image"
 import googlelogo from '@/public/Google Logo Icon Gsuite HD.jpeg'
 import { useRouter } from "next/navigation"
+import { da } from "zod/v4/locales"
 
 
 
@@ -37,20 +39,21 @@ async function onsubmit(e:React.FormEvent<HTMLFormElement>){
   if(data.get('username')===''||data.get('password')===''){
               return
   }
-
+ 
  setloading(true)
   try{
-    const res= await  signIn('credentials',{
-    redirect:false,
+    console.log(data.get('username') as string,data.get('password') as string)
+    const res= await signIn('credentials',{
         username:data.get('username') as string,
     password:data.get('password') as string,
-  }
-
-)
+    redirect: false
+  })
+console.log('after')
      if(!res?.ok){
+      
         throw new Error(res?.error as string)    
             }
-
+console.log('sadasdsa')
             
 setloading(false)
 setiserror(false)
@@ -58,16 +61,17 @@ seterror('')
  router.push('/')
   }catch(err) {
    const errmes= err instanceof Error? err.message:'somthing went wrong'
+    setloading(false)
    setiserror(true)
     seterror(errmes)
-    setloading(false)
+   
   }
 
 
 }
 
   return (
-    <Card className="w-full max-w-sm rounded-2xl">
+    <Card className="w-full max-w-sm rounded-2xl bg-white text-black">
       <CardHeader>
         <CardTitle className=" text-[5.5em]  sm:text-[4em] ">Login to your account</CardTitle>
         <CardDescription >
@@ -79,7 +83,7 @@ seterror('')
       </CardHeader>
       <CardContent>
 
-        <form onSubmit={onsubmit}>
+        <form onSubmit={onsubmit} suppressHydrationWarning={true}>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="user">UserName</Label>
@@ -121,7 +125,7 @@ seterror('')
       </CardContent>
       <CardFooter className="flex-col gap-2">
 
-        <Button onClick={()=>{signIn('google')}} variant="outline" className="w-full">
+        <Button onClick={()=>{signIn('google')}} variant="outline" className="w-full" suppressHydrationWarning={true}>
                <div className="w-[20px] h-[20px] relative">
                   <Image src={googlelogo} fill alt="google logo" className="w-full h-full absolute"></Image>
                 </div>  

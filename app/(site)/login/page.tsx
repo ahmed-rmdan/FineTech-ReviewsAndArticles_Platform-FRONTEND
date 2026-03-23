@@ -1,4 +1,7 @@
-import { CardLogin } from "@/components/user/login"
+'use client'
+
+import { CardLogin } from '@/components/user/login'
+
 
 
 

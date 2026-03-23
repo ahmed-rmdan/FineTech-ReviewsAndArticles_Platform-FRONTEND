@@ -3,6 +3,25 @@ import { Maincomment } from "@/components/comments/main";
 import type { post } from "@/types/types";
 
 
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/posts/viewpost?id=${resolvedParams.id}`, {
+    cache: 'no-store',  
+  });
+
+  if (!res.ok) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+
+  const data:{post:post} = await res.json();
+
+  return {
+    title: data.post.title,
+    description: data.post.description,
+  };
+}
 
 export default async function Postpg({params}:{params:{id:string}}) {
   const resolvedParams = await params;

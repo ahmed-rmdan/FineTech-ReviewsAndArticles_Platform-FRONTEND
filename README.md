@@ -1,5 +1,5 @@
-# FineTech Platform 
-**FineTech Platform** is a full-stack Reviews and Articles Platform web app with an integrated **Admin Dashboard** & **Analysis Board** .  
+# TrueTech Platform 
+**TrueTech Platform** is a full-stack tech content Platform web app with an integrated **Admin Dashboard** & **Analysis Board** .  
 It provides a experience for users that can interact and check reviews and articles for leatest technology 
  and provide a full control DashBoard and analysis for admin.
 ## Features ✨

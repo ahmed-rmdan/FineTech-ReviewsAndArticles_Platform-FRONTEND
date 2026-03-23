@@ -5,7 +5,7 @@ import { MainReviews } from "@/components/reviews/main";
 import { Trends } from "@/components/trend/trends";
 import { MainPosts } from "@/components/posts/mainposts";
 export const metadata: Metadata = {
-  title: "FineTech-Home",
+  title: "TrueTech-Home",
   description: " NEWS & Review for Technologies",
 };
 export const dynamic = 'force-dynamic';
