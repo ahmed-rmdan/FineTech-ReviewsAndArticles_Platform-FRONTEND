@@ -28,7 +28,7 @@ if(type==='mobile'){
     )
 }else{
 return(
-    <div className=" absolute flex flex-row top-[80px] lg:top-[100px] items-center justify-center sm:right-[50px] right-[130px] 2xl:right-[200px]
+    <div className=" absolute flex flex-row top-[60px] lg:top-[75px] 2xl:top-[80px] items-center justify-center sm:right-[5px]  2xl:right-[110px]
        gap-[10px] bg-[#e5e7eb]  w-[350px] h-[50px]">
                          <Input  ref={input} type="text" className=" border-[#cb1b16] text-[4em] w-[67%] border-2 text-[#cb1b16] bg-white "  />
                           <Button onClick={handleclick}  type="submit" variant="outline" className=" bg-[#cb1b16] hover:bg-[#cb1b16] text-[3em]  w-[25%]
