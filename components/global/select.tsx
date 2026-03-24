@@ -33,12 +33,12 @@ return(
   <SelectTrigger className=" w-[45%] sm:w-[22%] xl:w-[15%]  text-[5em]  !text-white bg-main ">
     <SelectValue placeholder={value} className="text-white"/>
   </SelectTrigger>
-  <SelectContent className="text-white bg-main  text-[5em]" >
-         <SelectItem  value="AllReviews">AllReviews</SelectItem>
-    <SelectItem value="Software">Software</SelectItem>
-    <SelectItem value="Hardware">Hardware</SelectItem>
-    <SelectItem value="Electronics">Electronics</SelectItem>
-     <SelectItem value="Other">Other</SelectItem>
+  <SelectContent className="text-white bg-main  text-[5em] " >
+         <SelectItem  value="AllReviews " className="hover:text-[#cb1b16] hover:bg-white">AllReviews</SelectItem>
+    <SelectItem value="Software" className="hover:text-[#cb1b16] hover:bg-white">Software</SelectItem>
+    <SelectItem value="Hardware" className="hover:text-[#cb1b16] hover:bg-white">Hardware</SelectItem>
+    <SelectItem value="Electronics" className="hover:text-[#cb1b16] hover:bg-white">Electronics</SelectItem>
+     <SelectItem value="Other" className="hover:text-[#cb1b16] hover:bg-white">Other</SelectItem>
   </SelectContent>
 </Select>
 )

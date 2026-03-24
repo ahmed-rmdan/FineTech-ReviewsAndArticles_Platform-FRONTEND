@@ -82,7 +82,7 @@ const selectedfile=ev.target.files[0]
 
 
   return (
-    <Card className="w-full relative max-w-sm rounded-2xl">
+    <Card className="w-full relative max-w-sm rounded-2xl bg-white text-[#cb1b16]">
 
       <CardContent className="flex flex-col items-center gap-3">
         <div className=" flex items-center justify-center relative w-[160px] h-[160px] rounded-[180%] ">

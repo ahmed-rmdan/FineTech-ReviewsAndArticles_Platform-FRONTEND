@@ -71,7 +71,7 @@ seterror('')
 }
 
   return (
-    <Card className="w-full max-w-sm rounded-2xl bg-white text-black">
+    <Card className="w-full max-w-sm rounded-2xl bg-white text-black border-[#cb1b16] border-[0.5px]">
       <CardHeader>
         <CardTitle className=" text-[5.5em]  sm:text-[4em] ">Login to your account</CardTitle>
         <CardDescription >
