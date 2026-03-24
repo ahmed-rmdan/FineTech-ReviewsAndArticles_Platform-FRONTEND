@@ -30,6 +30,6 @@ It provides a experience for users that can interact and check reviews and artic
 - Deployment: Render + Vercel + Redis UpStash
 - Test : Jest ,supertest ,React Testing Library ,Swagger
 ## project live demo
-https://finetech-platform.vercel.app/
+https://truetech-platform.vercel.app/
 ## project live Video
 https://www.youtube.com/watch?v=7qeTip2uvP0
